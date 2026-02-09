@@ -1,0 +1,356 @@
+Exception Handling
+====================
+
+Exception
+-------------
+
+==> An Abnormal event occurs during the execution of the application which disrupts  the normal flow of the java program in execution.
+
+ When JVM rules are violated, we will get an exception
+ When Exception Raised application terminated abnormally and abnormal termination of the application causes the followings issues.
+
+	1) user may lost the work/data
+	2) user doesn't have information about what went wrong
+	3) resources given to the application can not be gracefully released.
+
+Exception Handling
+=================
+
+Exception handling is a mechanism of dealing with exceptions and preventing damages which are caused by the exceptions.
+
+Exception handling makes java as Robust
+
+
+note : A Robust language refers to language that is reliable , error- resistant and able to handle the exceptions or unexpected situations gracefully.
+
+
+How does java supports Exception Handling
+=============================================
+
+Java supports the Exception handling by using below keywords
+
+try, catch, finally, throw, throws
+
+
+ex :  
+
+public class ExceptionHandlingDemo {
+
+	public static void main(String[] args) {
+		
+		int i=10;
+		
+		String s=null;
+		
+		int [] arr= {12, 13,14};
+		
+		System.out.println("Srinivas");		
+		
+		try {
+		
+	//	System.out.println(i/0);
+		
+		System.out.println(arr[3]);
+		
+		
+//		System.out.println(s.length());
+		}		
+		
+		catch (ArithmeticException e) {
+			// TODO: handle exception
+			
+			e.printStackTrace();
+		}
+		
+		catch (ArrayIndexOutOfBoundsException e) {
+			// TODO: handle exception
+			
+			e.printStackTrace();
+		}
+		
+		catch (NullPointerException e) {
+			// TODO: handle exception
+			
+			e.printStackTrace();
+		} 
+		
+		catch (Exception e) {
+			// TODO: handle exception
+			
+			e.printStackTrace();
+		}
+		
+		System.out.println("Hello");
+
+	}
+
+}
+
+
+try block
+=========
+
+==> try is a keyword which is used to create block of code in java.
+
+==> we use try block to write risky code
+
+==> If any exception raised in try block, instead of program termination try block get terminated.
+
+
+ex try{
+
+  //risky code
+}
+
+
+catch block
+==============
+
+==> catch is a keyword which is used to create block of code in java.
+
+==> catch block is used to handle the exceptions
+
+==> we handle all the exceptions in catch block hence catch block is a exception handler.
+
+
+******Between try and catch block no code is allowed *********
+
+=> If any exception raised in try block, control always will go to catch block and one try block will associate with multiple catch blocks
+
+
+Exception Hierarchy
+=========================
+
+
+java.lang.Throwable is the super class of all exceptions
+
+
+It has 2 sub class
+
+1) Exception 
+
+2) Error
+
+
+java.lang.Exception is divided into 2 types 
+
+1) Checked Exception   2) Unchecked Exception
+
+
+1) Checked Exception
+=====================
+
+The Exceptions which are checked by the java compiler is called checked exceptions.
+
+we can say checked exceptions are compile time exceptions
+
+ex: IOException, SQLException EOFException(EOF--EndOfFile), ServletException
+
+
+2) Unchecked Exception
+=====================
+
+The exceptions which are not checked by the java compiler, and we will get the exceptions at runtime are called un-checked exceptions.
+
+The exceptions which are checked by the JVM during runtime of java program are called runtime exceptions or un-checked exceptions.
+
+
+ex: ArithmeticException, NPE(NullPointerException), AIOOB(ArrayIndexOutOfBoundsException)
+
+====================================
+Explain about "throw" keyword.
+====================================
+
+"throw" is the keyword in java exception handling and which is used to raise the exception explicitly in java program.
+
+we can raise a either predefined exception or custom exception by using throw keyword
+
+ex: throw new ExceptionType("error message");
+
+
+public class ThrowKeyWordDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		int age=17;
+		
+		if(age<18) {
+			
+			throw new ArithmeticException("Age must be above 18 years ");
+		}
+		else
+			System.out.println("Eligible for vote");
+	}
+}
+
+finally block 
+============
+
+==> "finally" is one of the  keyword in java exception handling and it will be always executed.
+
+==> "finally" block is used to place the cleanup code such as closing files, releasing resources, and disconnecting DB connections.
+
+==> generally, we use to write "finally" block after catch block 
+
+ex : try{
+	//code that throw an exception
+	}
+
+	catch(){
+
+	//code that handle the exception
+	}
+	finally{
+	// code that always will execute 
+	}
+
+//try block can be followed by finally block
+
+		try{
+	//code that throw an exception
+	}
+	
+	finally{
+	// code that always will execute 
+	}
+
+
+public class FinallyBlockDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		int i=10;
+		
+		try {
+			System.out.println(i/0);
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		finally {
+			System.out.println("finally");
+		}
+	}
+}
+
+throws keyword
+===============
+
+==> "throws" is one of the keyword in exception handling which is used to declare the exceptions at method level.
+
+==> we can specify multiple exceptions by using throws keyword.
+
+ex :  psvm(String...args) throws SQLException, IOException, CloneNotSupportedException{
+
+//method implementation
+
+}
+
+public class CheckedExceptionDemo implements Cloneable {
+
+	public static void main(String[] args) throws CloneNotSupportedException {
+		// TODO Auto-generated method stub
+		
+		CheckedExceptionDemo demo=new CheckedExceptionDemo();
+		
+		System.out.println(demo.hashCode());
+		
+			Object obj=demo.clone();
+			
+		System.out.println(obj.hashCode());
+			
+	}
+}
+
+Custom Exceptions or User Defined Exceptions
+=============================================
+
+==> In Java, We can create the exceptions by our own by extend the RunTimeException or Exception class is called as Custom exceptions or user defined exceptions
+
+==> To provide meaningful messages to end users we create the custom exceptions and to improve the readability and maintainability of code.
+
+ class UserNotFoundException extends RuntimeException {
+		
+	private static final long serialVersionUID = 1L;
+
+	public UserNotFoundException(String msg) {
+		
+		super(msg);
+	}
+}
+ 
+ public class CustomExceptionDemo{
+	 
+	 public static void main(String[] args) {
+		 
+		 String user="Srini";
+		 
+		 String user1="Arun";
+		 
+		 if(user.equals(user1)) {
+			 
+			 System.out.println("User Found");
+		 }
+		 else {
+			
+			 throw new UserNotFoundException(user1+" User not found");
+		}
+		
+	}
+	 
+	 
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

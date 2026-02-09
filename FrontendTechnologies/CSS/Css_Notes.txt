@@ -1,0 +1,74 @@
+Cascading Style Sheets:
+---------------------
+CSS is style , we can apply HTML page is more presentational
+CSS is styling language
+
+Styles are the attributes defined for the HTML elements to make the more interactive and responsive
+<h1 style="background-color:red;> Welcome</h1>
+
+css syntax:
+selector{
+property:value
+}
+
+css we have used in 3 ways:
+
+1.inline style
+2.Embedded style or internal style
+3.external style
+
+inline style:
+in this method the styles are configure individually by using <style> attribute
+<h1 style="background-color:red;> Welcome</h1>
+<h2 style="background-color:red; color:white; text-align:center;"> Welcome</h2>
+
+use: styles are fast rendering (Application loading is fast)
+disadvantage:
+this style will work in same element we can't reuse this
+
+Embedded/internal style:
+
+in this styles are defined using <style> container
+you embedded in <head> or <body> section
+
+use:
+we can reuse our style across various elements in page 
+
+problem:
+rendering time is slow as compared to inline
+
+External style:
+in this styles we can write in separate class and save as a .css file and the we can that file in to our HTML page by using link tag
+use:
+ we can use our styles for many html pages
+and loading is fast
+
+CSS Selectors Summary:
+=============================
+Selector Type			Syntax				Example
+Tag selector			element	p 			{ color: red; }
+Class selector			.classname			.box { padding: 10px; }
+ID selector			#idname				#footer { text-align: center; }
+Group selector			selector1, selector2		h1, h2 { margin: 0; }
+
+
+Common CSS Properties
+===========================================
+Property			Example Value			Purpose
+color				red, #333333			Text color
+background			blue, url(img)			Background color/image
+font-size			16px, 1.5em				Size of the font
+text-align			center, left			Align text
+margin				10px					Space outside the element
+padding				10px					Space inside the element
+border				1px 					solid black	Border around the element
+width, height			100px,50%				Size of the element
+
+Hover Effect Example:
+==============================
+button:hover {
+  background-color: green;
+  color: white;
+}
+
+

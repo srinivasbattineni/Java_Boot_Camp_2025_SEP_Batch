@@ -1,0 +1,183 @@
+Introduction of Full stack development
+=======================================
+
+Fullstack development = Frontend Development + Backend Development
+
+
+Frontend: User Interface(UI)
+
+->Clients /users will interact with software application using frontend
+
+
+Backend: The hidden part of the application which contains business logic
+
+->When user perform some operation on frontend then backend logic will execute to handle the operation.
+
+->The programmer who can develop the Frontend and backend application is called as Fullstack developer. 
+
+
+
+Frontend technologies
+=====================
+
+HTML, CSS, Java Script, Angular, React JS
+
+
+Backend Technologies
+====================
+
+Java, Python, PHP, .Net , Node JS
+
+
+
+Servers
+===========
+
+A server is a system or software that provides resources to other programs or devices known as clients.
+
+In the context of java application, A server receives client requests and process them, and send back response(like webpages, data, api)
+
+
+Web Servers
+=============
+
+Web Server handles the HTTP requests and suitable for Servlets and JSP's
+
+ex : Apache Tomcat
+
+
+Application Servers
+======================
+
+Application Servers suitable for the Enterprise Level applications.
+
+Ex: jboss, WebLogic, Glassfish, and WebSphere 
+
+Application servers uses to deploy Banking applications and large enterprise applications.
+
+
+Database
+==========
+A Database is an organised collection of data that can be easily accessed, managed and modified. 
+it is used to store and retrieve the data efficiently for applications
+
+Types of Databases
+==================
+
+RDMS(Relational Database Management System)
+==============================================
+Store the data in tables in the form of rows and columns and uses SQL(Structured Query Language) to support relationship between tables.
+
+Ex: Oracle, MySQL, PostgreSQL, SQL Server
+
+No SQL Database
+==========================
+
+Store the data into non-tabular format : JSON, key-value, document, graph or column
+
+ex: MongoDB(Document based), DynamoDB(Document based), Redis(key-value store)
+
+
+Tools
+==================
+
+GIT Hub---Code integration 
+
+JIRA---project management/ Bug tracking/ work assignment
+
+Sonarcube---For Code quality checking
+
+Junit----Fir Unit testing
+
+JMeter---For Performance testing
+
+Jenkins--For Deployment(Automated deployment)
+
+
+Colud
+==========
+
+Amazon---AWS
+Microsoft---Azure
+Google---GCP
+Oracle cloud
+IBM cloud
+VM Ware cloud
+Alibaba cloud
+
+
+Roles and Responsibilities of Fullstack developer
+=================================================
+
+1) Understanding the requirements of project
+
+2) Analyze the requirements
+
+3) Design and planning
+
+4) Development of each requirement
+
+5) Unit Testing and code review
+
+6) code integration(git hub)
+
+7) Frontend + backend code integration
+
+8) Deployment, support and maintenance 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+		
+
+
+
+
+
+		 
+
+
+
+
+
+
+		
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+

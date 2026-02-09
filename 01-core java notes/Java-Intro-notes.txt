@@ -1,0 +1,171 @@
+Java Introduction
+====================
+
+
+
+what is java
+-------------
+
+-> Java is a programming language which is used to develop standalone applications, web applications and enterprise applications.
+
+-> Java language developed by Sun Micro system in the year of 1991
+
+-> James Gosling is the lead for the team who developed Java Language
+
+-> The First of java came into market in the year of 1995
+
+Note--Now Sun Microsystems is acquired by Oracle corporation
+
+-> Java is a free software and open source
+
+
+Java is divided into 3 types
+-----------------------------
+
+==>J2SE/JSE---Java Standard Edition-----We use JSE to develop the standalone applications(standalone applications runs on single machine) ex: CALC, Notepad 
+==>J2EE/JEE--Java Enterprise Edition---We use JEE to develop the Web applications or Enterprise Applications
+
+Everyone can access web applications using internet 
+ex: Gmail, YouTube, Facebook, Naukri, irctc...etc 
+
+==>J2ME/JME--Java Micro/Mobile Edition---We use JME to develop the Mobile Applications  
+
+ex: watsapp, messenger, phonepay, Gpay
+
+
+
+Java Features
+=================
+
+1) Simple--- The Complex Topics of C/C++ are eliminated in java(Operators Overloading, pointers, Memory management)
+ 
+2) Platform Independent---
+
+-> Java Programs we can execute on any machine
+-> we use JVM(Java Virtual Machine) to made java as a platform independent
+->JVM is responsible to execute/run java programs
+
+
+3) Robust---   Due to Automatic Memory management and Exception handling we can say Java is Robust(Strong).
+
+4) OOPS(Object Oriented Programming System)----- 
+
+		-> Everything will be represented in the form of objects in java 
+		-> Code reusability
+
+5) Multithreaded---  Built-in support for Multithreading to perform multiple tasks simultaneously.
+
+6) Architectural Neutral---Byte code is not dependent on any system architecture.
+
+
+Environment Setup
+==================
+
+1) download and install the Java software
+
+		JDK(Java Development Kit)
+		JRE(Java Runtime Environment)
+
+
+2) JDK/JRE/JVM---
+
+
+JDK--To Develop and execute the java program we need required environment  is called JDK
+
+JRE--I want to run the Java program in Client machine so JRE provides that environment  to run the Java application.
+
+JVM---In JRE, JVM is responsible to run our java program.
+
+
+Java Program Structure
+=======================
+
+1) package statements
+
+2) import statements 
+
+3) class declaration
+
+4) variables declaration or initialization
+
+5) methods
+
+
+SampleHello.java
+-------------------
+
+class Hello
+{
+
+public static void main(String[] args){
+
+System.out.println("Welcome to Srini-It-Solution");
+
+}
+
+}
+
+javac is the command to compile the java program(javac SampleHello.java)
+
+java is the command to run the .class file and print the output on console(java Hello)
+
+
+Translators
+-------------
+
+-> It is used to covert from one format to another format
+
+->There are 3 types of Translators available
+
+		1) Interpreter
+		2) Compiler
+		3) Assembler
+
+-->Interpreter will convert the program line by line
+
+-->Compiler will covert all the lines of the program at a time
+
+--> Assembler will convert the assembler programming languages into machine understandable language.
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

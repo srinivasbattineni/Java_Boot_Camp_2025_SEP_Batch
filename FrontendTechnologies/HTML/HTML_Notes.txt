@@ -1,0 +1,317 @@
+Frontend Technologies:
+
+
+Types of applications:
+
+Desktop Application
+Web Application
+Distributed Application
+IOT Application Internet of things
+Mobile Application
+AI
+2D&3D Application
+
+HTML: Presentation layer
+CSS: styling
+JavaScript: Manipulation
+
+What is web?
+internet is wide area n/w that connects Computers all over the world
+1990 Tim Berners lee he is founder of WEB
+Web is portion of internet with restricted Access
+under CERN (Council for European Research & nuclear labs)
+before html
+we can use FTP file transfer protocol
+this used for only upload and download documents
+Email Systems:
+for communication , not to any pages   only for important msgs
+1995 Tim Barnes lee
+
+HTML:
+Hyper text Markup language
+it is language it is used for presentation so that we can present correctly on browser
+
+HTML is presentation language ex: button
+
+HTML is collection of Elements arranged in an hierarchy order called DOM(Document object mode)
+
+Markup Lang:
+
+using tags we can display the data
+Tag : <> angular brackets
+<head> HTML DEMO </head>
+
+HTML Text Editors:
+
+notepad
+notepad++
+Editplus
+VS Code
+
+HTML Tags:
+-------------
+two types of tags
+1. paired tag
+2. empty/single tag
+
+<head>
+</head>
+<body> </body>
+<h1>
+</h1>
+
+this is single tag no end tag for this <br>
+
+HTML Element:
+<head> HTML DEMO </head>
+from opening tag to ending tag we can call it as element
+
+HTML Attribute:
+Attribute is like a key value Type
+name: Anusha
+video : src <link>
+
+HTML Comments:
+<!-- this is comment tag in html  -->
+syntax: <!-->
+
+paragraph tag:
+
+<P> </P>
+ex: stories, poems, content
+
+Heading Tags:
+<h1> </h1>
+<h2> </h2>
+..
+<h6> </h6>
+
+Formatting tags:
+ <b> bold
+<u> under line
+<mark> define mark
+<small>
+<i>
+<sub>a^n
+<sup>CO2(sufix)
+
+Div Tags:
+<div>
+
+to elements divide
+ used as a container
+ ta align center
+======================================================================================
+
+
+Anchor tag:
+------------------------------
+it used to add links to our html page
+
+<a href="https://www.google.com"> Click me</a>
+
+horizontal line:
+<hr>
+
+Image tag:
+
+<img src="photo/beach.jpg" alt="My image"><br>
+
+video tag:
+<br><video width="640" autoplay loop controls>
+  <source src="photo/SampleVideo.mp4" type="video/mp4">
+  </video> 
+
+Attribute			Description
+----------------------------------------------------
+id			Unique identifier for an element
+class			Assigns one or more class names (used with CSS and JavaScript)
+style			Inline CSS styles
+title			Tooltip text (shows when you hover over the element)
+href			Specifies the URL for a link (<a>)
+src			Specifies the path to an image or media file (<img>, <script>, etc.)
+alt			Alternative text for images if image fails to load
+type			Specifies the type of input, button, or script
+value			Defines the initial value of an input element
+
+Body section:
+--------------
+
+bgcolor : it set background color
+text : it sets color for text in page
+background: it sets background image for the page
+
+HTML we have define colors in 3 ways
+1. 3 char #RGB  color name
+2. 6 char #RRGGBB  color shade
+3 codes #8377
+
+Link tag:
+it is used to link external document to our page
+
+<link href ="photo/favicon.ico" rel="shortcut icon">
+
+
+List:
+
+unorder list
+<ul>
+<li> home</li>
+<li> about <li>
+</ul>
+
+order list
+<ol>
+<li>phone </li>
+<li> laptops </li>
+<li> Mobiles </li>
+</ol>
+marquee tag:
+
+<marquee> this is html Demo </marquee>
+
+
+
+Table:
+<table> tag is used to in HTML page to define table and display data
+<tr> used to display the table row
+<td> display the table data
+<th> table header
+==================================================================================
+FORM Page:
+--------
+Employee details:
+
+first name: Anusha
+last name: Sadineni
+mobile no: 9701491969
+gender: o M o F
+email: Anushas@gamil.com
+Address:
+Hobbies: CRICKET
+	Reading books
+	chess
+
+<label for ="fname"> First Name : </label>
+<input type="text" id="fname" name="fname" required>
+
+What is HTML Form:
+--------------
+An html form is used to collect the user input details
+it is a building block for the web application like sign in , login
+
+how we can create form page:
+ by using <form>
+
+syntax:
+<form action="submit">
+----
+ ---
+---
+</form>
+
+<label> tag:
+label element is used for user screen readers
+
+syntax:
+<label for="fname">FirstName:</label>
+
+for is used to match the  input id
+improves accessibility 
+
+<input> tag:
+used to take the user input
+
+input tag many types
+
+<input type="text" name="Username">
+general text purpose only
+
+password input:
+it will hides the characters in to dots
+<input type="password" name="password">
+
+Email input:
+it will validate the email format
+<input="email" name="Email">
+
+Number input:
+only allows numbers with specified limits
+<input type="number" name="age" min="1" max="100">
+ 
+Radio type:
+select only one option
+<input type="Radio" name="Gender" value ="male">Male
+<input type="Radio" name="Gender" value ="female">Female
+
+Checkbox:
+we can select any number of checkboxes
+<input type="checkbox" name="hobby" values="Cricket"> Cricket
+<input type="checkbox" name="hobby" values="Football"> Football
+
+submit:
+send form data to the required action URL
+<input type="submit" value="Register">
+
+Reset:
+reset the all fields to default fields
+<input type="reset" value" Clear form">
+
+file upload:
+it allows to user to upload any files
+<input type="file" name ="Resume" >
+
+<input type="color">
+<input type="date">
+<input type="datetime-local">
+<input type="hidden">
+<input type="image">
+<input type="month">
+<input type="range">
+<input type="search">
+<input type="tel">
+<input type="time">
+<input type="url">
+<input type="week">
+
+select dropdown:
+
+we can chose only one option in the dropdown
+<select name="Country">
+<option value="india"> India</option>
+<option value="usa"> USA</option>
+<option value="uk"> UK</option>
+
+Text area:
+ it is a multi line input field 
+<textarea name="comments" rows="4" cols="100"> Enter your comments</textarea>
+
+Button element:
+button element defines clickable button
+<button type="submit" Submit Form </submit>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

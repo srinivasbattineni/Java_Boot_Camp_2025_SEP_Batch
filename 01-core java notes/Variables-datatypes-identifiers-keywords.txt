@@ -1,0 +1,370 @@
+
+Variables
+-------------
+
+-> Variables is like a container which is used to store the data
+
+		ex: name----srini
+		    age=30
+		    gender=m
+		   isStudent=false
+		   mysalary=400.00
+
+-> We need to specify the type of variable to store the data
+-> To specify the type of data we use 'data types'
+
+
+data types
+-----------
+
+-> data types are used to specify the type of data we are storing in a variable
+
+-> data types are divided into 2 types
+
+1)primitive/predefined-data types
+
+	1) Integral data types
+		a) byte
+		b) short
+		c) int
+		d) long
+
+	2) decimal types
+
+	3) Character types
+
+	4) Boolean types
+
+2) Non-primitive /Referenced types 
+
+
+
+1) Integral data types
+========================
+
+-> Integral data types are used to store the numbers without decimal points
+
+-> we can store both positive numbers and negative numbers by using integral data types
+
+
+ ex: age=30
+   
+ phNo=12345678909
+
+ studentCnt=40 
+
+accountBalance=-4000
+
+-> In this category we have 4 data types
+
+1) byte-----> default value is 0-------> 8 bits
+2) short----> default value is 0------> 2 bytes
+3) int-----> default value is  0------> 4 bytes
+
+4) long---->default value is 0l-------> 8 bytes
+
+
+Decimal data types
+======================
+
+-> Decimal data types are used to store the numbers with decimal points.
+
+-> we can store both positive numbers and negative numbers by using decimal data types
+
+
+	petrol price= 107.567465
+	stock price= 6678.54
+	percentage =90.9
+	weight	   =5.9
+
+-> In this category we have 2 data types 
+		
+			1) float ---->4 bytes----> up to 6 decimal points
+			2) double ---->8 bytes----> up to 15 decimal points
+
+Character data types
+======================
+
+-> Character data type is used to store single character
+
+-> Any single character(alphabet/digit/special character) we can store using the 'char' data type
+
+-> char data type will occupy 2 bytes of memory
+
+-> when we are storing the data into chat data type ''(single quotes) is mandatory.
+
+-> default value is 'u0002'
+
+
+ex: gender= 'm'   rank='1'
+
+
+Boolean data type
+================== 
+
+->It is used to store the true/ false values
+-> it will occupy 1 bit of memory
+
+note: 8 bits= 1 byte
+
+ex: isStudent
+    isPass
+    isEven
+    isMarried
+
+
+
+Variables example
+=================
+
+-> To store the data into variables we need to perform 2 steps
+
+		1) variable declaration
+			
+			byte age;
+
+		2) variable initialization 
+			byte age=30;
+
+class VariablesDemo{
+
+public static void main(String[] args){
+
+int  age=30;
+float price=107.67f;
+
+double stockPrice=678.542878;
+
+char gender='M';
+
+Boolean isMarried=true;
+
+
+System.out.println("age = "+ age);
+
+System.out.println("price = "+ price);
+
+System.out.println("stockPrice = "+ stockPrice);
+
+System.out.println("gender = "+ gender);
+
+System.out.println("isMarried = "+ isMarried);
+
+}
+
+}
+
+Identifiers
+================
+
+
+All java components requires a name. For variables, for classes and for methods we need a name
+
+int age;
+
+class Hello{
+
+//code
+}
+
+main(){
+//code
+
+}
+
+--> The name which we can use for packages,  classes, variables and methods  is called identifier
+
+--> we can use any name as identifier but we need to follow below rules to work with identifiers.
+
+
+Rule-1
+------  
+
+java program will allow below characters for identifiers
+
+		1) a - z
+		2) A - Z
+		3) 0 to 9
+		4) $ (dollar)
+		5) _ (underscore)
+
+ex:  name-----valid identifier
+     name@----invalid
+     age#-----invalid
+
+Rule-2
+--------
+
+Identifiers should not start with digit(first character shouldn't be a digit)
+
+
+	ex: 1age-------> invalid
+	     age3------> valid
+	   _name-------> valid
+	   $name-------> valid
+	    @name-------> invalid
+
+Rule-3
+-------
+
+	We should not use java keyword as identifier(53 key words)
+
+		int  byte =20; ---invalid because byte is a keyword
+       		byte for=30;  ----invalid because for is a keyword
+		int try=40;   ----invalid because try is a keyword
+
+		long mobileNo=1234567890;
+
+Rule-4 
+------
+
+		spaces are not allowed in identifiers
+		
+		int mobile bill=500;----invalid
+		int mobileBill=500;-----valid
+
+Rule-5
+------
+java is a case sensitive language 'name' and 'NAME' both are not same.
+
+
+java naming conventions
+-----------------------
+
+-> Java language follows some standard naming conventions for predefined packages, classes and methods
+
+
+naming conventions for class name
+----------------------------------
+
+A class name contains any number of word without spaces
+
+It is recommended to write every word first character as upper case in class name
+
+
+ex: class Hello{},   class HelloWorld {},  class UserManagementService {}
+
+note: class names and interface naming conventions are same.
+
+
+
+Variable naming conventions
+-----------------------------
+
+A variable name contains any number of words without spaces.
+
+It is recommended to write first word first character as lower case and other words first character in upper case.
+
+
+int age;
+
+int userAge;
+
+long creditCardNumber; 
+
+
+
+Method naming conventions
+--------------------------
+
+A method name contains any number of words without spaces.
+
+It is recommended to write first word first character as lower case and other words first character in upper case.
+
+
+ex: main(){}    saveUser(){}      getEmployee(){}   getCreditCardNumber(){}
+
+
+note: variables and method naming conventions are same.
+
+
+Naming conventions for constants
+================================
+
+-> constant means fixed value (values will not change)
+
+-> its recommended that to write all constant variables in upper case, if constant variable contains multiple words its recommended to use _ to separate the words
+
+
+final int MIN_AGE=18;
+
+final int MAX_AGE=60;
+
+
+Naming conventions for packages
+==================================
+
+A package name contains any number of words without spaces.
+
+it is recommended to use only lowercase letters in package names
+
+If package name contains multiple words we have to use .(dot) to separate the words
+
+
+ex: com.sriniit.java.corejava
+    org.sriniit.j2ee.servlets
+
+	java.lang
+	java.io
+	java.util
+
+java keywords
+=============================
+
+java keywords are reserved words that have special meaning to the java compiler. we can not use keywords as identifiers.
+
+Keywords are used to define, data types, control flow, access modifiers, class/interface and exception handling.
+
+
+
+Data Type & Variable Keywords
+ =================================================================
+Keyword					Purpose
+
+int				Integer data type
+double				Floating-point number
+boolean				True/false values
+char				Character type
+byte				Small integer type
+short				Small integer
+long				Large integer
+float				Decimal number with single precision
+void				No return value for method
+new				Creates new objects
+
+Access Modifiers
+====================================================================
+Keyword					Purpose
+
+public				Accessible from anywhere
+private				Accessible within class only
+protected			Accessible within package/subclass
+static				Belongs to class, not instance
+final				Value/method/class can't change
+
+Control Flow
+======================================================================
+Keyword					Purpose
+
+if, else			Decision making
+switch, case, 			default	Multi-branch selection
+for, while, do			Loops
+break, continue			Loop control
+return				Exit from method and return value
+
+Class/Interface Structure
+======================================================================
+Keyword					Purpose
+
+class				Defines a class
+interface			Defines an interface
+extends				Inherit from a class
+implements			Implements an interface
+abstract			Declares an abstract method/class
+this				Refers to current object
+super				Refers to superclass
+package				Declares a package
+import				Imports another class/package
+
+
+

@@ -1,0 +1,192 @@
+		JAVA Script
+===================================================
+before Java script
+
+website are static --only built with the HTML, CSS
+html provides only structure like  headings , paragraphs, forms, tables
+css provides,colors , fonts, spacing 
+tere is no interaction  between the Apllication
+
+by connecting the serverside languages like java, php, .net
+every small interacin also page reload needed to communicate with the server
+
+scenario:
+
+Name:Anusha
+Email:empty filed
+Pasword:*******
+submit
+
+the form page sent to server side an check all fields then it sent back email field is required 
+then again page is reloaded , and lost you entered data
+
+what happens with using JavaScript:
+-----------------------------------------------
+javascript check the form before sending to server
+
+Email field is required 
+nopage reload is , fast response 
+
+Problems without javascript:
+------------------------
+slow response -- you had to wait  for the server to respond
+more server load
+ bad user experience 
+
+What is Java script:
+-----------------------
+java script is programming language  used to make our web page more interactive
+it runs on browser  and controls the behaviour of the HTML elements on a webpage
+
+javascript is used to shows alerts /popups
+
+validate  form inputs
+add dynamic content
+handle user actions
+build interactive web applications
+
+<script>
+document.getElemenetById("fname").innerHTML="My first java script page";
+</script>
+
+JavaScript O/p
+
+alert()
+confirm()
+document.write()
+console methods
+innerHtml
+outerhtml
+innertext
+
+Note:
+InnerHtml:
+ when you want to change HTML Element
+InnerText:
+when you want to change plain text
+
+let a,b,c;
+a=5;
+b=6;
+c=a+b;
+
+
+JavaScript Keywords:
+--------------------------------
+JavaScript statements often start with a keyword to identify the JavaScript action to be performed.
+
+Keyword				Description
+var				Declares a variable
+let				Declares a block variable
+const				Declares a block constant
+if				Marks a block of statements to be executed on a condition
+switch				Marks a block of statements to be executed in different cases
+for				Marks a block of statements to be executed in a loop
+function			Declares a function
+return				Exits a function
+try				Implements error handling to a block of statements
+
+
+JavaScript Comments:
+//
+const 18
+let " Anusha"
+
+{
+let x=2;
+
+}
+
+
+JavaScript Operators
+--------------------------
+
+Javascript operators are used to perform different types of mathematical and logical computations.
+
+Types of JavaScript Operators
+There are different types of JavaScript operators:
+
+Arithmetic Operators
+Assignment Operators
+Comparison Operators
+String Operators
+Logical Operators
+Bitwise Operators
+Ternary Operators
+Type Operators
+
+Arithmetic Operators:
++	Addition
+-	Subtraction
+*	Multiplication
+**	Exponentiation (ES2016)
+/	Division
+%	Modulus (Remainder)
+++	Increment
+--	Decrement
+
+JavaScript Assignment Operators
+Assignment operators assign values to JavaScript variables.
+
+Operator		Example		Same As
+=			x = y		x = y
++=			x += y		x = x + y
+-=			x -= y		x = x - y
+*=			x *= y		x = x * y
+/=			x /= y		x = x / y
+%=			x %= y		x = x % y
+**=			x **= y		x = x ** y
+
+type of 10 number
+type of  "Anusha" String
+
+let age=18;
+let result=(age>=18)? "Adult":"minor";
+
+JavaScript Data types:
+String
+Number
+bigint
+boolean
+object
+undfined
+
+//Number
+
+let x=6;
+let y=5;
+let length=50;
+let weight =10;
+
+//String
+let name="Anusha";
+let color="yellow";
+
+//Boolean
+let x=true;
+let y=false;
+
+//object
+
+const person={firstname: "Anusha"};
+
+//Array object
+
+const cars=["Audi","BMW","volvo"];
+
+Conditional statement:
+
+if(age>=18){
+it is available for vote;
+}
+not eligible
+
+if(age>=18){
+it is available for vote;
+} else{
+not eligible
+}
+
+for(int i=1; i<=5; i++)
+
+

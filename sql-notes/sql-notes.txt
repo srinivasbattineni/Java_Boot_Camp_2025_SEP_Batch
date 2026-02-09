@@ -1,0 +1,801 @@
+Database
+=============
+
+--> A Database is a organized collection of data  that allows users to store the data and retrieve the data efficiently.
+
+ex : Library is like a database that contains information about books and authors.
+
+
+Types of databases
+===================
+
+Relational Database
+---------------------
+
+--> In Relational Database, Data is stored in the tables in the form of rows and columns
+
+ex : MySQL, PostgreSQL, SQL Server, Oracle
+
+NoSQL Database
+--------------
+
+--> In NoSQL database, we can store non-tabular or unstructured data in the for of json, document or key-value pair.
+
+--> NoSQL database is designed for scalability and handling unstructured data.
+
+ex: Mongo DB(document based), Radis(key-value pair), Dynamo DB, Cassandra. 
+
+
+Introduction about the RDBMS
+=============================
+
+--> RDBMS stands for Relational Database Management System which allows user to create, manage and interact with relational databases like Oracle, MySQL, and PostgreSQL
+
+--> In RDBMS, Data stores in tables in the form of Rows(Records) and Columns(attributes)
+
+--> In RDBMS, tables can be linked with other tables by using relationships 
+
+ex : Orders table can be linked with Customers table to show which order is placed by the customer.
+
+--> RDBMS enforces rules to ensure data is accurate and consistent(ex : No 2 customers have the same unique customer ID)
+
+primary Key : its unique identifier in each row.
+
+Foreign Key : Its reference to the another table primary key
+
+
+SQL(Structured Query Language)
+================================
+
+--> SQL stands for Structured Query Language which is used to communicate with multiple databases with in RDBMS
+
+--> SQL is the bridge between the developer and data
+
+SQL commands
+--------------
+
+--> SQL commands are the instructions. It is used to communicate with database to perform specific tasks of data.
+
+--> SQL perform various tasks like create table, delete table, update data into the table and set permissions for users.
+
+
+ Types of SQL commands
+========================
+
+There are 5 types of sql commands which are 1)DDL  2)DML 3) DQL 4) DCL 5) TCL
+
+
+1) DDL(Data Definition Language)
+--------------------------------
+
+DDL stands  for the Data Definition Language which is used to changes the structure of the table  like creating the table, deleting and altering a table.
+
+All the commands are Auto committed which means permanently save all changes in DB.
+
+ex : CREATE, DROP, ALTER, and TRUNCATE
+
+
+
+CREATE
+-------
+
+--> Create command is used to create the table
+
+syntax : create table table_name(column_name datatype);
+
+create table employee(emp_id int, emp_name varchar(20), DOB date); 
+
+
+DROP
+-----
+
+--> Drop command is used to delete the table permanently.
+
+syntax : drop table table_name
+
+drop table employee;
+
+
+ALTER
+-----
+
+--> This is used to alter the structure of the table. This change could be either to modify  the characteristics of an existing attribute or to add new attribute.
+
+syntax : ALTER table table_name add column_name column definition;
+
+
+ALTER table employee add emp_salary long;
+
+ALTER table employee drop DOB;
+
+TRUNCATE
+------------
+
+--> This command is used to delete all rows(records) from table
+
+syntax : TRUNCATE table table_name
+
+TRUNCATE table employee;
+
+
+2) DML(Data Manipulation Language)
+------------------------------------
+--> By using DML we can insert, update and delete the data
+
+ex : INSERT, UPDATE and DELETE 
+
+INSERT
+---------
+
+--> INSERT Query is used to insert the data into table
+
+syntax: insert into table_name(col 1, col 2, col 3......col n) values(value 1, value 2,value 3.....value n);
+
+INSERT into employee(emp_id, emp_name, emp_salary) values(101,'Srini', 99999);
+INSERT into employee(emp_id, emp_name, emp_salary) values(102,'Venki', 199999);
+
+UPDATE
+--------
+
+This command is used to modify the data in the existing table
+
+syntax: update table table_name SET(column_name 1=value 1 , column_name 2= value 2......column_name n=value n);
+
+
+update employee set emp_salary=399999 where emp_id=101;
+
+--> To perform update operations we have to set  SQL_SAFE_UPDATES is 0
+
+DELETE
+----------
+
+--> delete command is used to delete the record in the table
+
+	syntax : delete from table_name where [condition]
+
+	delete from employee where emp_id=101;
+
+3) Data Query Language
+=======================
+
+DQL is used to fetch data from DB, we use only one command in DQL that is select
+
+syntax:  select expression from table_name where conditions;
+
+select * from employee where id=102
+
+select Query
+============
+
+we can select the specific columns and specific records by using the below Query
+
+select emi_id,emp_name,emp_salary from employee;
+
+select emi_id,emp_name,emp_salary from employee where emp_id=104;
+
+
+*************************************************
+
+4) Data Control Language
+======================
+
+DCL commands are used to grant and take back authority from any user.
+
+GRANT, REVOKE
+
+GRANT---> It is used to give user access privileges to DB
+
+REVOKE--->It is used to take back permissions from the user.
+
+
+-- Grant read-only access to entire database
+GRANT SELECT ON company_db.* TO 'readonly_user'@'%';
+
+-- Grant read access to specific tables
+GRANT SELECT ON company_db.employees TO 'report_user'@'localhost';
+GRANT SELECT ON company_db.departments TO 'report_user'@'localhost';
+
+
+-- Revoke specific privileges
+REVOKE DELETE ON company_db.employees FROM 'app_user'@'%';
+
+-- Revoke all privileges on a table
+REVOKE ALL PRIVILEGES ON company_db.salary_data FROM 'user1'@'localhost';
+
+-- Revoke all privileges globally
+REVOKE ALL PRIVILEGES ON *.* FROM 'former_employee'@'%';
+
+
+5) TCL(Transaction Control Language)
+====================================
+
+TCL commands can only use with DML commands like INSERT, DELETE and UPDATE only.
+
+These operations are automatically committed in the database that's why they cannot be used while creating tables or dropping them.
+
+ TCL:  COMMIT, ROLLBACK, SAVEPOINT
+
+Commit:
+============
+Commit command is used to save all the transactions to the database. 
+
+Syntax: COMMIT; 
+
+ Example: DELETE FROM CUSTOMERS WHERE AGE = 25;
+  COMMIT; 
+
+ Rollback:
+ ============
+ Rollback command is used to undo transactions that have not already been saved to the database.
+
+ Syntax: ROLLBACK;
+ Example: DELETE FROM CUSTOMERS WHERE AGE = 25;
+ ROLLBACK; 
+
+SAVEPOINT:
+===============
+It is used to roll the transaction back to a certain point without rolling back the entire transaction.
+
+Syntax: SAVEPOINT SAVEPOINT_NAME;
+
+
+Clauses in SQL
+=======================================
+
+--> SQL clause is a specific section or component of SQL statements that perform particular task.
+
+1) SELECT clause
+----------------
+
+--> SELECT clause specifies which column to retrieve from the table and it will always comes first in query.
+
+ex : select emp_name,emp_salary from employee---specific columns
+
+	select * from employee ----all columns
+
+2) FROM cluse
+----------------
+
+FROM cluse specifies data retrieve from which table and we use FROM clause just before the table name
+
+3) WHERE clause
+-----------------
+
+--> Where clause is used to specify a condition while fetching data from single or multiple tables
+
+--> We can use WHERE clause to filter the records and fetch the necessary records
+
+4) ORDER BY clause
+---------------------
+
+-->The SQL ORDER BY clause is used to sort the data in either ascending or descending order, based on one or more columns.
+
+--> By default we fetch the data in ascending order.
+
+syntax : select column_list from table_name [where condition] [order by column 1, column 2.....column n] [DESC] [ASC]
+
+
+ex : 	select * from employee order by emp_name desc ;
+
+	select * from employee order by emp_salary  ;
+
+note : you can use more columns after ORDER BY. Make sure whatever column you are using to sort the data, that column should be immediate after the ORDER BY.
+
+
+5) GROUP BY
+------------
+
+--> The Group By clause is used to group the rows(records) having the same values in the specified column into rows like count, sum, avg functions.
+
+syntax : select column1, aggregate_function(column2) from table_name group by column 1;
+
+ex :
+
+# sum of the salary from each department
+select department, sum(emp_salary)  from employee group by department;
+
+#Average of the salary from each department
+select department, avg(emp_salary) from employee group by department;
+
+#count of employees from each location
+select location, count(*) as employee_count from employee group by location;
+
+
+6) HAVING clause
+-------------------
+
+The HAVING clause is used to filter the records after GROUP BY operation.
+
+--> WHERE filters rows before grouping
+--> HAVING filters group after aggeration
+
+
+syntax : select column1, aggregate_function(column2) from table_name group by column 1 HAVING condition;
+
+ex :SELECT department, SUM(emp_salary) AS Total_Salary FROM employee GROUP BY department HAVING SUM(emp_salary) > 299999;
+
+    select location, count(*) as employee_count from employee group by location having employee_count>1;
+
+ Like keyword
+-----------------
+
+The SQL LIKE keyword is used to compare a value to similar values using wildcard operators. There are two wildcards used in conjunction with the LIKE operator.
+	• The percent sign (%)
+	• The underscore (_)
+
+The percent sign represents zero, one or multiple characters. 
+The underscore represents a single number or character. 
+These symbols can be used in combinations.
+
+
+select * from customers where NAME like '%r%';
+
+select * from customers where SALARY like '%_%';
+
+select * from customers where SALARY like '2_%';
+
+
+select * from customers where SALARY like '2______';
+
+select * from customers where SALARY like '6______';
+
+
+TOP keyword, LIMIT clause, ROWNUM clause
+=======================================
+The SQL TOP clause is used to fetch the top N number of records from the table.
+
+ex: select top 3 * from customers   // This command is for oracle database
+
+ex: select * from customers limit 3;  // this command is for MySQL DB
+
+Note − All the databases do not support the TOP clause. For example MySQL supports the LIMIT clause to fetch limited number of records
+ while Oracle uses the ROWNUM command to fetch a limited number of records.
+
+
+AND and OR Conjunctive operators
+=================================
+The SQL AND and OR operators are used to combine multiple conditions to fetch data in SQL
+
+
+AND
+-----
+if we use AND operator it has to satisfy all condition what we mentioned in sql query
+ex: select id, NAME, SALARY from customers where NAME='srini' AND SALARY=20000;
+
+
+OR
+----
+If we use OR operator if we mention multiple conditions it has to satisfy any one of the condition.
+
+ex: select id,name, SALARY from customers where NAME='srini' OR SALARY=20000;
+
+distinct keyword
+=====================
+Distinct keyword is used to eliminate duplicate records.
+
+Syntax:
+SELECT DISTINCT column1, column2,.....columnN FROM table_name WHERE [condition] 
+
+ex: 
+select distinct department from employees;
+
+select distinct salary from employees;
+
+Alias Query
+============
+
+We can rename table or column temperorly by giving another name known as Alias.
+
+The use of aliasesis to rename a table in specfic sql statement
+
+The rename is a temperory chang the actual table name does not change.
+
+
+Syntax:
+
+SELECT column1, column2....FROM table_name AS alias_name WHERE [condition];
+
+SELECT o.OID, o.AMOUNT FROM Orders AS o;
+
+SELECT c.name AS CustomerName, o.AMOUNT FROM Customers AS c JOIN Orders AS o ON c.id = o.CUSTOMER_ID;
+
+select customers.ID, customers.NAME, customers.AGE,orders.OID,orders.AMOUNT from customers,orders where customers.ID=orders.CUSTOMER_ID;
+
+
+SQL Joins
+===================
+
+--> The SQL join clause is used to combine recvords from 2 or more tables
+
+--> A join is used to combine rows from two or more tables based on the releted column between the tables.
+
+ex : select c.customer_id, c.name, c.salary, o.order_id, o.order_name from Customers c, Orders o where c.customer_id=o.customer_id;
+
+--> There are different types of joins avaialable in SQL
+
+1) Inner join  2) Left Join  3) Right Join  4) Full Join  5) self join
+
+
+1) Inner join
+-------------
+
+--> Inner join return the matching records  from both tables
+
+
+ex : 
+
+SELECT     customers.customer_id,    customers.NAME,    customers.AGE,    orders.order_id,    orders.order_name FROM     customers inner join orders on customers.customer_id=orders.customer_id; 
+
+2) Left  Join
+-----------
+
+--> Left join returns all records from left side table and matching records from right side table
+
+ex : 
+
+ SELECT     customers.customer_id,    customers.NAME,    customers.AGE,
+    orders.order_id,    orders.order_name FROM
+    customers left join orders on customers.customer_id=orders.customer_id; 
+
+2) Right  Join
+-------------
+
+--> Right join returns all records from right side table and matching records from left side table
+
+ex : 
+
+ SELECT     customers.customer_id,    customers.NAME,    customers.AGE,
+    orders.order_id,    orders.order_name FROM
+    customers  right  join orders on customers.customer_id=orders.customer_id;
+
+3) Full  Join
+-----------------
+
+--> Full join returns the all the records from left side table and all the records from right side table
+
+
+   SELECT     customers.customer_id,    customers.NAME,    customers.AGE,
+    orders.order_id,    orders.order_name FROM
+    customers left join orders on customers.customer_id=orders.customer_id
+    
+UNION
+    SELECT     customers.customer_id,    customers.NAME,    customers.AGE,
+    orders.order_id,    orders.order_name FROM
+    customers right join orders on customers.customer_id=orders.customer_id; 
+
+
+Self join 
+=============
+
+--> A self-join is a regular join where a table is joined with itself.
+ --> It's used when you need to compare rows within the same table.
+
+ex :This is the most common self-join example is  Employees and Their Managers
+
+emp_id	emp_name	manager_id	salary	    department
+
+1	Arun		NULL		100000	   CEO
+2	Venkatesh	1		80000	   Engineering
+3	Syamala		1		75000	   Marketing
+4	Pavani		2		60000	   Engineering
+5	Srini		2		65000	   Engineering
+
+
+example Query
+-----------------
+SELECT 
+    e.emp_name AS employee_name,
+    m.emp_name AS manager_name,
+    e.department
+FROM employees e
+LEFT JOIN employees m ON e.manager_id = m.emp_id;
+
+
+
+Aggregate functions
+=========================
+
+Aggregate functions used to perform calculations on a set of values and return a single value.
+
+
+ex:  COUNT(), AVG() and SUM() 
+
+
+1. COUNT() – Count Rows
+================
+
+Returns the number of rows that match a specified condition.
+Syntex:  SELECT COUNT(column_name) FROM table_name;
+
+SELECT COUNT(*) FROM employees;  ----Returns the total number of rows in the employees table.
+
+SELECT COUNT(department) FROM employees;---Returns the number of non-NULL values in the department column.
+
+ 2. AVG() – Average Value
+======================
+
+Returns the average value of a numeric column.
+
+Syntex: SELECT AVG(column_name) FROM table_name;
+
+SELECT AVG(salary) FROM employees;------Returns the average salary of all employees (excluding NULLs).
+
+
+3. SUM() – Total Sum
+=======================
+
+Returns the total sum of a numeric column.
+
+Syntex: SELECT SUM(column_name) FROM table_name;
+
+SELECT SUM(salary) FROM employees;-------------Returns the total of all salaries in the employees table.
+
+Bonus Example with GROUP BY:
+======================
+
+SELECT department, COUNT(*), AVG(salary), SUM(salary) FROM employees GROUP BY department; 
+
+Returns:
+
+Number of employees in each department and average salary in each department and total salary paid by each department.
+
+
+The SQL MIN() and MAX() Functions
+===================================================
+
+The MIN() function returns the smallest value of the selected column. 
+The MAX() function returns the largest value of the selected column
+
+SELECT MIN(salary) FROM employees;
+SELECT MAX(salary) FROM employees;
+
+The FIRST() Function
+====================================
+The FIRST() function returns the first value of the selected column.
+
+ Syntax :SELECT FIRST(column_name) FROM table_name;
+
+The LAST() Function 
+======================================
+The LAST() function returns the last value of the selected column.
+
+ Syntax: SELECT LAST(column_name) FROM table_name; SQL LAST()
+
+
+IN Operator
+=============
+
+The IN operator allows you to specify multiple values in a WHERE clause. 
+The IN operator is a shorthand for multiple OR conditions.
+
+IN Syntax 
+
+SELECT column_name(s) FROM table_name WHERE column_name IN (value1, value2, ...);
+Or
+SELECT column_name(s) FROM table_name WHERE column_name IN (SELECT STATEMENT);
+
+
+SELECT * FROM Customers WHERE Country IN ('Germany', 'France', 'UK');
+SELECT * FROM Customers WHERE Country NOT IN ('Germany', 'France', 'UK');
+
+The SQL BETWEEN Operator
+============================
+
+The BETWEEN operator selects values within a given range. The values can be numbers, text, or dates.
+The BETWEEN operator is inclusive: begin and end values are included.
+
+
+BETWEEN Syntax 
+
+SELECT column_name(s) FROM table_name WHERE column_name BETWEEN value1 AND value2;
+
+SELECT * FROM employees WHERE salary BETWEEN 30000 AND 50000;  ---Returns employees whose salary is ≥ 30000 and ≤ 50000.
+SELECT * FROM orders WHERE order_date BETWEEN '2024-01-01' AND '2024-12-31'; ----Returns all orders placed in the year 2024.
+
+SELECT * FROM products WHERE price NOT BETWEEN 100 AND 500;-----Returns products with price less than 100 or greater than 500.
+
+UNION and UNION ALL
+================================================
+Both are used to combine the result sets of two or more SELECT statements.
+
+UNION — Removes Duplicates
+====================
+SELECT column1 FROM table1 UNION SELECT column1 FROM table2;
+
+Combines results from both queries and removes duplicate rows and performs sorting internally to eliminate duplicates (performanace slightly slower)
+
+
+UNION ALL — Keeps Duplicates
+===================
+SELECT column1 FROM table1 UNION ALL SELECT column1 FROM table2;
+
+Combines results from both queries and keeps all rows, including duplicates and faster than UNION (no sorting)
+
+
+Constraints
+--------------
+
+Constraints are rules applied  to tables columns to enforce the data integrity, validity and consistancy in a database.
+
+Constraints could be either column level or table level
+
+The column level constraints are applied only to the column where as table level constraints applied at whole table
+
+
+ex : NOT NULL, DEFAULT, UNIQUE, PRIMARY KEY, FOREIGN KEY CONSTRAINT, CHECK, INDEX
+
+
+1) NOT NULL
+---------------
+
+This constraint we have to use to prevent NULL vlaues in a applied column.
+
+ex : create table employees(emp_id int, emp_name varchar(20) not null);
+
+2) DEFAULT
+-----------
+
+The  DEFAULT constraint  provides default values into a column when the insert statement does not provide specfic value.
+
+create table Accounts(acc_id int, account_name varchar(20), account_status varchar(20) DEFAULT 'active');
+
+insert into accounts(acc_id,account_name ) values(101, 'SAVINGS');
+
+insert into accounts(acc_id,account_name, account_status ) values(101, 'SAVINGS', 'inactive');
+
+3) UNIQUE
+-----------
+
+--> Unique constraint is used to ensure all values in a column are different.
+
+--> Multiple UNIQUE constraints applied on single table
+
+
+ex : create table users (user_id int unique, user_name varchar(20) unique);
+
+
+4. PRIMARY KEY
+============================
+
+A primary key is a field in a table which uniquely identifies each row/record in a database table. 
+
+Primary keys must contain unique values. A primary key column cannot have NULL values.
+
+A table can have only one primary key, which may consist of single or multiple fields. When multiple fields are used as a primary key, 
+they are called a composite key.
+If a table has a primary key defined on any field(s), then you cannot have two records having the same value of that field(s).
+
+CREATE TABLE Customers (
+    ID INT PRIMARY KEY,
+    Name VARCHAR(50)
+);
+
+
+5. FOREIGN KEY
+================
+
+A foreign key is a key used to link two tables together. This is sometimes also called as a referencing key.
+A Foreign Key is a column or a combination of columns whose values match a Primary Key in a different table.
+
+CREATE TABLE Orders (
+    OrderID INT PRIMARY KEY,
+    CustomerID INT,
+    FOREIGN KEY (CustomerID) REFERENCES Customers(ID)
+);
+
+Prevents inserting an order with a non-existing customer.
+
+ 6. CHECK
+=========================
+Limits the values in a column.
+
+CREATE TABLE Products (
+    ProductID INT PRIMARY KEY,
+    Price DECIMAL(10,2),
+    CHECK (Price > 0)
+);
+
+Ensures only positive prices.
+
+
+views
+---------
+
+A view is nothing more than a SQL statement that is stored in the database with an associated name.
+
+Views, which are a type of virtual tables allow users to do the following −
+
+• Restrict access to the data in such a way that a user can see and (sometimes) modify exactly what they need.
+• Summarize data from various tables which can be used to generate reports.
+
+The basic CREATE VIEW syntax is as follows −
+CREATE VIEW view_name AS SELECT column1, column2 FROM table_name WHERE [condition];
+
+You can include multiple tables in your SELECT statement in a similar way as you use them in a normal SQL SELECT query.
+
+ 
+create view IT_Employees as select emp_id, emp_name, emp_salary from employee where department in ('IT');
+select * from IT_Employees;
+
+--> Use View for Security
+
+ Hide salary info from non-admin users.
+
+create view public_employees as select emp_id, emp_name, department, location from employee;
+select * from public_employees;
+
+Indexes
+==========
+
+What Are Indexes in SQL?
+==============================
+An index in SQL is a database object used to speed up the retrieval of rows from a table — much like an index in a book helps you find topics faster.
+
+Why Use Indexes?
+==============================
+Without indexes, the database engine performs a full table scan to find matching rows — which is slow for large tables.
+
+Indexes improve query performance by reducing the amount of data scanned.
+
+A book’s index helps you quickly jump to a topic —A SQL index helps the DBMS quickly jump to the relevant rows.
+
+Types of Indexes in SQL
+==================================
+Index Type				Description
+
+Single-column index		Index on one column
+Composite index			Index on two or more columns
+Unique index			Ensures all values are unique
+
+
+ How to Create an Index
+=================================
+
+-- Single column index
+CREATE INDEX idx_emp_name ON employees(name);
+
+-- Composite index
+CREATE INDEX idx_emp_dept_salary ON employees(department, salary);
+
+How to Drop an Index---DROP INDEX idx_emp_name;
+
+DROP INDEX idx_name ON table_name;
+
+Example: Query Using Index
+
+SELECT * FROM employees WHERE name = 'Srini';
+
+If an index exists on name, the DBMS uses it to quickly locate 'Srini' instead of scanning every row.
+
+
+Sub Queries
+=================
+
+What is a Subquery?
+===================================
+A subquery is a query nested inside another query.Also called as inner query and nested query
+
+Used when you need the result of one query to filter or calculate something in another.
+
+ex:
+
+SELECT * FROM employees WHERE department_id = (SELECT department_id FROM departments WHERE department_name = 'IT');
+
+Why Use Subqueries?
+===================
+Filter rows based on another table’s result and perform calculations or aggregations
+
+Types of Subqueries
+====================
+
+Single-row Subquery----Returns one value (used with =, <, >,)
+
+SELECT * FROM employees WHERE salary = (SELECT MAX(salary) FROM employees);
+
+Multi-row Subquery----Returns multiple values (used with IN, ANY, ALL)
+
+SELECT * FROM employees WHERE department_id IN (SELECT department_id FROM departments WHERE location = 'Hyderabad');
+
+Correlated Subquery-----The inner query depends on the outer query (runs once per outer row)
+ 
+SELECT name FROM employees e WHERE salary > (SELECT AVG(salary) FROM employees WHERE department_id = e.department_id);

@@ -1,0 +1,64 @@
+<!Doctype html>
+<html>
+<head>
+<title>Html Form Page</title>
+ <!--<link rel="stylesheet" type="text/css" href="MyStyle.css">-->
+</head>
+<body>
+<h2> User Details Form </h2>
+
+<form action= "submit" method ="post">
+<label for ="fname"> First Name: </lable>
+<input type="text" id="fname" name="fname" required><br>
+<label for ="lname"> Last Name: </lable>
+<input type="text" id="lname" name="lname" required><br>
+<lable for="mobile">Phone Number:</lable>
+<input type="tel" id="mobile" name="mobile"
+patteren ="[0-9]"
+maxlength="10"
+required
+<br>
+<br><lable for="email" >Email:</lable>
+<input type="email" id="email" name="email" required<br>
+
+<br><label>Gender:</label>
+    <input type="radio" id="male" name="gender" value="Male">
+    <label for="male">Male</label>
+    <input type="radio" id="female" name="gender" value="Female">
+    <label for="female">Female</label>
+    <br><br>
+
+<!-- Checkboxes -->
+    <label>Skills:</label>
+    <input type="checkbox" name="skills" value="Java"> Java
+    <input type="checkbox" name="skills" value="HTML"> HTML
+    <input type="checkbox" name="skills" value="CSS"> CSS
+    <br><br>
+
+<label for="resume">Upload Resume:</label>
+    <input type="file" id="resume" name="resume">
+    <br><br>
+
+<label for="about">About Yourself:</label><br>
+    <textarea id="about" name="about" rows="4" cols="40"></textarea>
+    <br><br>
+
+<label for="city">Select City:</label>
+    <select id="city" name="city">
+      <option value="Delhi">Delhi</option>
+      <option value="Mumbai">Mumbai</option>
+      <option value="Bangalore">Bangalore</option>
+      <option value="Hyderabad">Hyderabad</option>
+    </select>
+    <br><br>
+<input type="submit" value="Register">
+ <input type="reset" value="Clear Form">
+</form>
+
+</body>
+</html>
+
+
+
+
+

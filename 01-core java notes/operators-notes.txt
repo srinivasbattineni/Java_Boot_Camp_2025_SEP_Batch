@@ -1,0 +1,243 @@
+Operators
+==============
+
+->Operator is a symbol which performs some operation on operands
+
+	int a=10;
+	int b=20;
+	int c= a+b;--->(+ is operator and a and b are the operands)
+
+
+-> We have below operators in java language
+
+			1) Arithmetic operators 
+			2) Logical Operators
+			3) Relational operators
+			4) Assignment Operators
+			5) new operator
+			6) dot(.) operator
+			7) ternary operator(conditional operator)
+
+
+1) Arithmetic operators 
+===========================
+
+Arithmetic operators are used to perform Arithmetic operations(calculations)
+ 
+		1) Addition ----------------> +
+		2) Subtraction-------------> -
+		3) Multiplication ----------> *
+		4) Division -------------> /
+		5) Modules---------------> %
+
+		6) increment operator-----> ++ 
+		7) decrement operator ----> --
+
+
+class ArithmeticOperatorsDemo {
+
+    public static void main(String[] args) {
+
+       int a= 50;
+
+	int b=10;
+
+        System.out.println("Addition: " + (a + b)); 		 //60
+        System.out.println("Subtraction: " + (a - b));  	//40
+        System.out.println("Multiplication: " + (a * b)); 	 //500
+
+  
+            System.out.println("Division: " + (a / b));  	// 5
+            System.out.println("Modulus: " + (a % b)); 		//0
+             
+    }
+}
+
+Increment Operator(++)
+====================
+
+->Increment operator(++) is used to increase the values by 1 
+
+-> Increment operator is divided into 2 types		
+			1) Post increment (a++)
+			2) Pre increment  (++a)
+
+
+
+post increment
+===============
+
+class PostIncrement
+
+{
+ public static void main(String[] args){
+		int a=5;    		
+
+System.out.println(a++);  // here a prints 5 first and becomes 6
+
+}
+
+}
+
+====================================
+class PostIncrement
+
+{
+ public static void main(String[] args){
+
+		int a=5;
+		a++;  // a is increasing to 6
+
+System.out.println(a++);  //  print the values 6 then it becomes 7
+
+System.out.println(a);    // print the value 7
+
+}
+
+}
+
+Pre increment
+===============
+
+class PreIncrement
+
+{
+ public static void main(String[] args){
+
+
+		int a=5;
+
+System.out.println(++a);   // here it becomes 6 and then print the value  -----6
+
+System.out.println(a);    // it will print the same values what it increased previously-----6
+
+}
+
+}
+
+Decrement operator
+======================
+
+--> Decrement operator(--) is used to decrease the value of variable by 1
+
+
+-->Decrement operator is divided into 2 types
+
+		1) Post decrement(a --)
+		2) pre decrement(-- a)
+
+
+1) Post decrement(a --)
+==========================
+
+class PostDecrement
+{
+ public static void main(String[] args){
+		int a=10;
+
+System.out.println(a);  //10
+System.out.println(a--);   //  First it will print 10 then it will decrease to 9
+System.out.println(a);    // 9
+System.out.println(a--);   // First it will print 9 then it will decrease to 8
+System.out.println(a);   // 8
+
+}
+
+}
+
+1) Pre decrement(-- a)
+==========================
+
+class PreDecrement
+
+{
+ public static void main(String[] args){
+
+		int a=10;
+
+System.out.println(a);  // 10
+System.out.println(--a);   // here it will decrease the value by 1 (o/p: 9)
+System.out.println(a);    // 9
+System.out.println(--a);   // here it will decrease the value by 1 (o/p: 8)
+}
+}
+
+Relational Operators
+=====================
+
+
+-> Relational Operators are used to check the relation between 2 operands
+
+>, <, >=, <=, !=, ==
+
+
+Logical operators
+====================
+
+-> To check more than one condition we will use logical operators
+
+AND  ----> &&----Here all conditions has to satisfy then it will go into next line of code else loop will terminate here
+
+OR----->   ||----Here one condition has to satisfy then it will go into next line of code else loop will terminate here
+
+NOT------> !
+
+
+Assignment Operators
+====================
+
+-> Equals(=) is called assignment operator
+
+int a=10;
+
+It is used to assign the value for a variable.
+
+
+new Operator
+============
+we can say new is the keyword used to create the object for a class
+
+Employee emp=new Employee();
+
+
+Dot(.) operator
+================
+
+Dot operator is used to access class variables and methods.
+
+System.out.println();
+
+
+
+
+
+
+
+
+
+
+
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	

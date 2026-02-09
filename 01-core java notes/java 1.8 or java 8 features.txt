@@ -1,0 +1,943 @@
+java 1.8 or java 8 features
+=============================
+
+java 1.0
+
+java 1.1
+
+java 1.2--- (Big release)-----collection framework
+
+java 1.5---(Big release)-----Annotations, Generics, Autoboxing/unboxing, Enums, for-loop(foreach)
+
+
+java 1.8---(Big release)---Functional programming
+.
+.
+.
+.
+java 24
+
+
+main objective of java 8 features
+---------------------------------
+
+--> Simplifying the java program
+
+--> Enabling the functional program
+
+--> Write more readable and concise code
+
+
+java 1.8 features
+-------------------
+
+1) Interface changes
+
+	1.1) default methods
+	1.2) static methods
+
+2) Functional Interfaces(@FunctionalInterface)
+
+	2.1) peidicate & BiPridicate 
+	2.2) Consumer & BiConsumer 
+	2.3) Supplier
+	2.4) Function & BiFunction
+
+3)  Lambda Expression
+
+4) Method Reference or constructor reference
+
+5) *****Stream API******
+
+6) Optional class
+
+7) foreach() method
+
+8) date& time API
+
+9) Base64 encoding and decoding
+
+
+1) Interface changes
+==========================
+
+--> Interface means collection of Abstract methods
+
+note : The method which does not have body we can say its Abstract method.
+
+-->A class can implement interface using keyword "implements"
+
+--> When a class is implementing an interface, it mandatory to override or implement all abstract methods of that interface otherwise class will not compile.
+
+
+interface Vehicle{
+	
+	void start();	
+	
+}
+
+class Car implements Vehicle{
+
+	@Override
+	public void start() {
+		// TODO Auto-generated method stub
+		
+		System.out.println("car-started");
+		
+	}
+	
+}
+
+class Bike implements Vehicle{
+
+	@Override
+	public void start() {
+		// TODO Auto-generated method stub
+		
+		System.out.println("Bike-started");
+	}
+}
+
+class Bus implements Vehicle{
+
+	@Override
+	public void start() {
+			
+		System.out.println("Bus-started");
+		
+	}	
+	
+}
+
+--> If we add new method in the interface the Car, Bike and Bus classes will fail at compile time so to overcome the problem we use default and static methods in interfaces
+
+--> Interface default methods we can override in classes but we can not override static methods in class
+
+--> Default and static methods are used for back-ward compatibility.
+
+
+package com.sriniit.java8progs;
+
+interface Vehicle{
+	
+	void start();
+	
+	default void m1() {
+		
+		System.out.println("Default -method-1");
+	}
+	
+	default void m2() {
+		
+		System.out.println("Default -method-2");
+	}
+	
+	public static void clean() {
+		
+		System.out.println("cleaning completed");
+	}
+	
+	
+}
+
+class Car implements Vehicle{
+
+	@Override
+	public void start() {
+		// TODO Auto-generated method stub
+		
+		System.out.println("car-started");
+		
+	}
+}
+
+
+public class InterafceDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Vehicle demo=new Car();
+		
+		demo.m1();
+		demo.start();
+		demo.m2();
+		Vehicle.clean();
+		
+
+	}
+
+}
+
+=====================
+Lambda Expressions
+====================
+
+
+--> Lambda Expressions concept introduced in java 1.8
+
+--> Java is called object oriented programming language. Everything will be represented in the form of objects.
+
+--> From 1.8V onwards java is also called as functional programming.
+
+--> In OOP language, Classes and Objects are main entities. We need to write methods inside the class only.
+
+--> Functional programming means, everything will be represented in the form of functions. Functions can exist out side of the class and Functions can be stored into a reference variable
+
+--> Function can be passed as a parameter to other methods.
+
+--> Lambda Expression introduced in java to enable the Functional programming.
+
+
+what is lambda
+----------------
+
+--> Lambda is an anonymous function which does not have any name, return type and modifier( -> )
+
+
+ex-1) method without Lambda
+------------------------ 
+
+	public void m1(){
+ 	System.out.println("Hello");
+		}
+
+ method with Lambda
+------------------------
+
+          ()->	System.out.println("Hello");
+
+
+note : when we have single statement in method body curly braces are optional.
+
+
+ex-2) method without Lambda
+------------------------ 
+
+	public void add(int a , int b){
+ 	System.out.println(a+b);
+		}
+
+ method with Lambda
+------------------------
+
+ 	(a ,b)->System.out.println(a+b);
+
+ex-3) method without Lambda
+------------------------ 
+
+	public int getLength(String name){
+
+		return name.length;
+ 	
+		}
+
+ method with Lambda
+------------------------
+
+ 	name->name.length;
+
+ex-4) method without Lambda
+------------------------ 
+
+	public Double getEmpSalary(Employee emp){
+
+		return emp.getsalary();
+ 	
+		}
+
+ method with Lambda
+------------------------
+
+ 	 emp->emp.getsalary();
+
+Functional Interfaces
+============================
+
+--> Interface which contains only one abstract method is called functional interface
+
+--> Functional interfaces are used to invoke Lambda Expressions
+
+--> Below are some predefined functional interfaces
+
+  		Runnable-------run() method
+  		Callable-------call() method
+		Comparable-----compareTo() method
+
+--> To represent one interface as Functional interface we have to use @FunctionalInterface annotation
+
+
+@FunctionalInterface
+
+public interface MyInterface{
+
+public void m1();
+}
+
+
+--> In java 8 we have several predefined functional interfaces  got introduced
+
+		1) Predicate & BiPredicate
+		2) Consumer  & BiConsumer
+		3) Supplier
+		4) Function & BiFunction
+
+--> The above interfaces are available from java.util.function package
+
+
+1) Predicate 
+===================
+
+--> It is predefined functional interface which is used to check the condition and returns true or false
+
+--> predefined functional interface is having only one abstract method which is test(T t)
+
+
+	interface Predicate{
+		boolean test(T t);
+
+		}
+
+example
+----------
+
+package com.sriniit.java8.functionalinterfaceprogs;
+
+import java.util.function.Predicate;
+
+public class PredicateDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Predicate<Integer> p=i-> i>10;
+		
+		System.out.println(p.test(9));  // false
+
+	}
+}
+
+package com.sriniit.java8.functionalinterfaceprogs;
+
+import java.util.function.Predicate;
+
+public class PredicateDemo1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		String [] names= {"Pavani", "Syamala", "Srini","Arun", "Venki", "Anil" };
+				
+				Predicate<String> p=name->name.charAt(0)=='V';
+				
+				for(String name :names) {
+					if(p.test(name)) {
+						System.out.println(name);
+					}
+				}
+
+	}
+}
+
+
+2) Consumer
+============
+
+--> It is predefined functional interface which is used to accept the input and does not return anything.
+
+--> predefined functional interface is having only one abstract method which is accept(T t).
+
+package com.sriniit.java8.functionalinterfaceprogs;
+
+import java.util.function.Consumer;
+
+public class ConsumerDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Consumer<String> c=name-> System.out.println(name);
+		
+		c.accept("Srini");
+	}
+}
+
+Supplier Functional Interface
+===============================
+
+--> It is predefined functional interface which does not accept input and return only values
+
+--> Supplier predefined functional interface is having only one abstract method which is get()
+
+
+
+package com.sriniit.java8.functionalinterfaceprogs;
+
+import java.util.function.Supplier;
+
+public class SupplierDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Supplier<String> s=()-> {
+			
+			String otp="";
+			
+			for(int i=1; i<=6; i++) {
+				
+				otp=otp+ (int) ( Math.random()* 10);
+			}
+			return otp;			
+		};
+		
+		System.out.println(s.get());	
+
+	}
+
+}
+
+Function Functional interface
+------------------------------
+--> Function is a predefined function interface in java8 having only one abstract method which is apply(T t)
+
+--> It takes input and returns the output.
+
+
+package com.sriniit.java8.functionalinterfaceprogs;
+
+import java.util.function.Function;
+
+public class FunctionDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Function<String, Integer> f=name->name.length();
+		System.out.println(f.apply("Srini"));
+		
+		System.out.println(f.apply("Arun"));
+		
+		System.out.println(f.apply("Pavani"));
+
+	}
+
+}
+
+Method Reference ::
+====================
+
+--> Method reference is a shorter way to write lambda expression that simplify call an existing method.
+
+--> It helps to concise the code would be more readable
+
+--> System.out::println   // method refrence
+
+ex :
+public class MethodRefDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
+		List<Integer> list=Arrays.asList(10,20,30,40,50);
+		
+		
+		for(Integer i : list) {
+			
+			System.out.println(i);
+		}
+		
+		list.forEach(i->System.out.println(i));  //fetching values using lambda expression with foreach
+		
+		
+		list.forEach(System.out::println);  //		fetching values using Method reference  with foreach	
+
+	}
+}
+
+Optional class
+=================
+
+--> java.util.Optional class is used to avoid NullPointerException
+
+
+String s="null";
+
+System.out.println(s.lengh());  //here we will get the NPE
+
+
+if(s!=null){
+
+s.o.p(s.length());   //here we will not get the NPE because we are checking the null value
+}
+
+ note : In the project there is no guarantee that every programmer will implement null, if anyone forgot to check the bull value then we will get the NPE
+
+to avoid this one we use Optional class
+
+
+
+Stream API
+===================================
+
+--> Stream API introduced in java 1.8 version
+
+--> Stream API is used to process the data
+
+note : collection are use to store the data
+
+--> Stream API is used to process the data of either collections or arrays
+
+
+--> Stream API provides several methods to perform operations on data
+
+We can divide streams into 2 types  
+1) Intermediate operations 
+
+	ex: map(),filter(), sorted(), limit(), distinct()  
+
+2) Terminal Operations
+
+	ex: foreach(), collect(), count(), reduce(), findFirst()
+
+note-1: Intermediate operations will perform operations on stream data and it will return new stream
+
+note-2 : Terminal operations will perform operations on intermediate operations and produce the result.
+
+
+package com.sriniit.java8progs;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class StreamFilterDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+	
+
+		List<Integer> list= Arrays.asList(10,20,30,40,50);
+
+	list.stream().filter(i->i>30).forEach(i->System.out.println(i));  // fetching list of elements with lambda expression
+		
+		list.stream().filter(i->i>30).forEach(System.out::println);  // fetching list of elements with method reference
+
+		
+	}
+
+}
+
+
+package com.corejava.java_8.inerface;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class StreamFilterDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		List<String> list = Arrays.asList("Pavani","Venkey","Arun","syamala","Anu");
+		list.stream().filter(i->i.charAt(0)=='A').forEach(i->System.out.println(i));
+			System.out.println();
+	    list.stream().filter(i->i.charAt(0)=='P').forEach(System.out::println);
+	    
+	}
+
+}
+
+mapping operations
+====================
+
+--> Mapping operations are belongs to intermediate operations in the stream api
+
+--> Mapping operations are used to transform the stream of elements and return transformed elements as a new stream
+
+
+	ex : Stream map(Function function)
+
+--> map() is used to apply transformation to each element in a stream. It will convert from one type to another type
+
+
+ex : 
+package com.sriniit.java8.streamprogs;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class MapDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		List<String> list=Arrays.asList("Venki", "Arun", "Pavani", "Syamala");		
+		
+		list.stream().map(name-> name.toUpperCase()).forEach(name-> System.out.println(name));  // using Lambda
+		
+		System.out.println();
+		
+		list.stream().map(name-> name.toUpperCase()).forEach(System.out::println);  // using Method ref
+		
+		System.out.println();
+		
+		list.stream().mapToInt(name->name.length()).forEach(System.out::println);
+		
+
+	}
+
+}
+
+flatMap( Function f)
+==========================
+
+--> flatMap() is used to process the list of streams into single stream.
+
+
+package com.sriniit.java8.streamprogs;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class FlatMapDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		List<String> javaCourses=Arrays.asList("java", "Spring", "Servlets", "Microservices");
+		
+		List<String> uiCourses=Arrays.asList("html", "css", "javaScript", "ReactJS");
+		
+		List<List<String>> courses=Arrays.asList(javaCourses, uiCourses);
+		
+		courses.stream().flatMap(course->course.stream()).forEach(course-> System.out.println(course));  // using lambda
+		
+		System.out.println();
+		
+		courses.stream().flatMap(List::stream).forEach(System.out::println);  //using method ref
+		
+	}
+
+}
+
+
+Slicing operations
+========================
+
+1) distinct () ==> It is used to get the unique elements from the stream
+
+2) limit (long maxSize) ==> It is used to get the elements from stream on given size from starting position.
+
+3) skip( long n)==> It is used to skip the given elements from starting position of the stream.
+
+
+Note : all the above 3 methods are intermediate operations methods. they will perform operation on stream and return new stream.
+
+
+package com.sriniit.java8.streamprogs;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class SlicingOperationsDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		List<String> javaCourses=Arrays.asList("java", "Spring", "Servlets", "Microservices","html", "css", "javaScript", "ReactJS");
+		
+		javaCourses.stream().limit(3).forEach(System.out::println);
+		
+		System.out.println();
+		
+		javaCourses.stream().skip(3).forEach(System.out::println);
+		
+		System.out.println();
+		
+		List<String> courses=Arrays.asList("java", "Spring", "Servlets", "Microservices","java", "css", "Servlets", "ReactJS");
+		
+		courses.stream().distinct().forEach(System.out::println);
+
+	}
+
+}
+
+Matching Operations
+======================
+
+1) boolean anyMatch(Predicate p)
+
+2) boolean allMatch(Predicate p)
+
+1) boolean noneMatch(Predicate p)
+
+
+note : the above 3 methods are belongs to terminal operations because they will return result directly.
+
+The above methods are used check the condition and returns true or false based on the condition.
+
+package com.sriniit.java8.streamprogs;
+
+import java.util.List;
+
+class Person{
+	
+	int id;
+	String name;
+	String country;
+	
+	public Person(int id, String name, String country) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.country = country;
+	}
+	
+	
+}
+
+public class MatchingOperationsDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		
+		List<Person> person=List.of(new Person(101, "Arun", "INDIA"),
+				new Person(104, "Syamala", "USA"),
+				new Person(102, "Pavani", "CANADA"),
+				new Person(103, "Venki", "UK"));
+		
+		
+		boolean status=person.stream().anyMatch(p->p.name.equals("Srini"));
+		System.out.println(status);
+		
+		boolean status1=person.stream().anyMatch(p->p.country.equals("INDIA"));
+		System.out.println(status1);
+		
+		System.out.println();
+		
+		boolean status2=person.stream().allMatch(p->p.name.equals("Venki"));
+		System.out.println(status2);
+		
+		System.out.println();
+		
+		boolean status3=person.stream().noneMatch(p->p.name.equals("Venki"));
+		System.out.println(status3);
+		
+		boolean status4=person.stream().noneMatch(p->p.name.equals("Srini"));
+		System.out.println(status4);
+				
+	}
+
+}
+
+Collectors in streams
+=============================
+
+
+Collectors is a utility class available in java.util.stream package and it will provide reduction operations such as 
+
+--> converting streams into List, Set and Map
+
+--> Grouping, partitioning, counting and joining.
+
+
+To perform the above operations we have to use collect() method--This is one of the terminal operation
+
+
+toList()---It will convert the stream of elements into List
+
+toSet()---It will convert the stream of elements into Set
+
+toMap()---It will convert the stream of elements into Map
+
+joining()--- for concatenation of two strings
+
+counting()---to count the elements 
+
+groupingBy()---group the elements
+
+
+package com.sriniit.java8.streamprogs;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class CollectorsDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
+		List<Integer> list= Arrays.asList(10,20,30,40,50,60);
+		
+		
+		list=list.stream().filter(i-> i>=30).collect(Collectors.toList());
+		
+		list.stream().filter(i-> i>=30).forEach(System.out::println);
+		
+		System.out.println();
+		System.out.println(list);
+		
+	}
+
+}
+
+
+base 64 encoding and decoding
+====================================
+
+
+Base 64 is a predefined class available in java.util package and which is used to perform encoding and decoding against the user data.
+
+
+package com.sriniit.java8progs;
+
+import java.util.Base64;
+
+public class Base64Demo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
+		String pwd="Password@123";
+		
+		String encodedPwd=Base64.getEncoder().encodeToString(pwd.getBytes());
+		
+		System.out.println(encodedPwd);
+		
+		
+		byte[] decode=Base64.getDecoder().decode(encodedPwd);
+		
+		String decodePwd=new String(decode);
+		
+		System.out.println(decodePwd);
+
+	}
+
+}
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 	
+		
+
+ 	
+		
+
+
+
+		
+
+
+
+		
+
+
+
+		
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

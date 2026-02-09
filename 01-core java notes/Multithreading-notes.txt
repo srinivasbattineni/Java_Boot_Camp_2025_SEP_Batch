@@ -1,0 +1,737 @@
+Multithreading
+=========================
+
+Task : work
+
+Single Tasking : Performing single task at a time is called single tasking
+
+	ex:  Explain the topic 
+	     Dictate the notes
+	     Ask Questions
+
+Multi tasking : If we perform multiple tasks at a time is called multi tasking.
+
+		ex : walking and listening music
+		     reading book and eating
+
+Multi Tasking we can achieve in 2 ways 
+
+1) Processed based Multi tasking   2) Thread Based Multi tasking
+
+
+1) Processed based Multi tasking
+
+ex : Windows OS is the best example for process based multi tasking. Each task/process can run independently in its memory.
+
+2) Thread Based Multi tasking
+
+
+--> To execute the java programs we need to go for Thread based multi tasking
+
+--> To implement Thread based multi tasking we will use Multi threading concept
+
+--> Java supports multi threading.
+
+
+Use cases for multithreading
+============================
+
+1) Send sms to all customers at a time
+
+2) Send email to all customers at a time
+
+
+Note : The main aim of the Thread based multi tasking is used to execute the program logic parallelly so that we can complete more work in less time.
+
+
+--> For every java program, JVM will create one thread by default is called as main thread.
+
+
+package com.sriniit.threadprogs;
+
+public class ThreadDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Thread t=Thread.currentThread();
+		
+		System.out.println(t.getName());
+	}
+}
+
+Note : Thread is a predefined class available in java.lang package. In thread class we have static method that is currentThread().
+
+
+User Defined Threads
+====================
+
+1) In java, there are 2 ways to create the user defined threads
+
+	1) By extending Thread class
+	2) By implementing Runnable interface
+
+
+package com.sriniit.threadprogs;
+
+public class UserDefindThreadDemo extends Thread {
+	
+	public void run() {
+		
+		System.out.println("run() method called");
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
+		UserDefindThreadDemo td=new UserDefindThreadDemo();
+		
+		Thread t=new Thread(td);
+		
+		t.start();
+	}
+}
+
+
+package com.sriniit.threadprogs;
+
+public class RunnableInterfaceDemo implements Runnable {
+	
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+		System.out.println("run() method called");
+		
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		RunnableInterfaceDemo demo=new RunnableInterfaceDemo();
+		
+		Thread t=new Thread(demo);
+		
+		t.start();
+
+	}
+
+}
+
+what is the difference between extending Thread class or implementing Runnable interface and which one is recommended ?
+==========================================================================================================================
+
+ --> If we extend the properties from Thread class then we can't extending properties from any other class because java doesn't support multiple inheritance.
+
+--> If we implementing runnable interface in future we can extend properties from any other class based on our requirement hence implementing Runnable interface is 	always recommended approach.
+
+
+what is Thread schedular
+============================
+
+-->  Thread Schedular is a program in JVM which is responsible to schedule threads and resources allocation  required for that Thread.
+
+--> when we call start() method then Thread schedular will start its operation.
+
+		1) allocating resources
+		2) Scheduling Threads
+		3) Execution of Threads
+
+
+start() method  vs  run() method
+===============================
+
+--> To start the Thread execution we will call start() method
+
+	t.strat()
+
+--> once start() is called then Thread schedular will come into picture to execute the Thread
+
+--> start() method internally calls the run() method
+
+--> inside run() method we will write the logic which should execute by that thread.
+
+
+note : we can call the run() method directly, but it will execute like a normal method by "main" thread
+
+
+sample program on Threads
+-----------------------------
+
+package com.sriniit.threadprogs;
+
+public class ThreadDemo1 extends Thread {
+	
+	
+	public void run() {
+		
+		for(int i=1; i<=5; i++) {
+			
+			System.out.println("Child-Thread");
+		}
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		ThreadDemo1 t1=new ThreadDemo1();
+		
+		Thread t=new Thread(t1);
+		
+		t.start();
+
+
+			for(int i=1; i<=5; i++) {
+			
+			System.out.println("Main-Thread");
+			}		
+	}
+
+}
+
+possibility of outputs for the above program
+------------------------------------------
+possibility-1
+
+Main-Thread
+Child-Thread
+Child-Thread
+Child-Thread
+Child-Thread
+Child-Thread
+Main-Thread
+Main-Thread
+Main-Thread
+Main-Thread
+
+possibility-2
+
+Main-Thread
+Main-Thread
+Main-Thread
+Main-Thread
+Main-Thread
+Child-Thread
+Child-Thread
+Child-Thread
+Child-Thread
+Child-Thread
+
+possibility-3
+
+Main-Thread
+Main-Thread
+Main-Thread
+Child-Thread
+Child-Thread
+Child-Thread
+Child-Thread
+Child-Thread
+Main-Thread
+Main-Thread
+
+Thread class constructors
+===============================
+
+1) Thread t=new Thread();
+2) Thread t=new Thread(Runnable r);
+3) Thread t=new Thread(String name);
+4) Thread t=new Thread(Runnable r, String name);
+5) Thread t=new Thread(Thread Group g, String name);
+6) Thread t=new Thread(Thread Group g, Runnable r);
+7) Thread t=new Thread(Thread Group g, Runnable r, String name);
+
+Getting and setting name of the Thread
+=======================================
+
+--> Every Thread in java have some name, It may be by default generated by JVM or explicitly generated by the programmer
+
+--> Thread class is having below method to set the name and get the name
+
+	1) public final String getName()
+	2) public final void setName(String name)
+
+
+	public class ThreadNamesDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub		
+		
+		Thread.currentThread().setName("Srini");
+		
+		System.out.println(Thread.currentThread().getName());
+	}
+}
+
+Thread priorities
+===================
+
+-->Every Thread has some priorities in java, either by default it will generated by JVM or It will explicitly generated by the programmer.
+
+--> Thread class defines the below 3 constant values to represent the standard priorities.
+
+	Thread.MIN-PRIORITY---->1
+
+	Thread.NORM-PRIORITY---->5  --default priority
+
+	Thread.MAX-PRIORITY---->10
+
+The valid range of the priorities [1-10]
+
+1-------min priority
+
+10------max priority
+
+By default JVM will assign NORM priority to a Thread.
+
+
+package com.sriniit.threadprogs;
+
+public class ThreadPriorityDemo extends Thread {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		ThreadPriorityDemo t1=new ThreadPriorityDemo();
+		ThreadPriorityDemo t2=new ThreadPriorityDemo();
+		ThreadPriorityDemo t3=new ThreadPriorityDemo();
+		
+		System.out.println(t1.getPriority()+"   "+t2.getPriority()+"    "+t3.getPriority());
+		
+		t1.setPriority(MAX_PRIORITY);  //10
+		t2.setPriority(NORM_PRIORITY);  //5
+		t3.setPriority(MIN_PRIORITY);// 1
+		
+		System.out.println();
+		
+		System.out.println(t1.getPriority()+"   "+t2.getPriority()+"    "+t3.getPriority());	
+
+	}
+}
+
+Thread Life Cycle
+====================
+
+--> Thread life cycle contains several phases of Thread execution
+
+1) New state 2) Ready state  3) Running state 4) Dead/Terminated state
+
+
+New -->A Thread begins its life cycle in the new state and Thread remains in the new state until calls the start() method.
+
+Ready/Runnable---> After calling the start() method thread will come to the ready state.
+
+Running state--> When a Thread comes to the running state when the Thread schedular allocating resources for Thread execution.
+
+Waiting/Blocking state---> Thread-A waits for Thread-B execution to complete the tasks hence we can say Thread-A is Waiting/Blocking state
+
+Dead/Terminated-->One Thread complete its execution on tasks then the Thread enters into Dead state.
+
+
+
+package com.sriniit.threadprogs;
+
+public class ThreadLifeCycleDemo extends Thread {
+	
+	
+	public void run() {
+		
+		for(int i=1; i<=5; i++) {
+			
+			System.out.println("Child Thread");       	// Thread is in Running state
+			try {
+				Thread.sleep(2000);      		// Thread is in Waiting/Blocking state
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		
+	}   								// Thread is in Dead/Terminated state
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
+		ThreadLifeCycleDemo th=new ThreadLifeCycleDemo();  	// Thread is in new state
+		
+		th.start();     					// Thread is in Ready/Runnable state
+
+	}
+
+}
+
+
+How to prevent the Thread execution
+=====================================
+
+We can prevent the Thread execution by using the below methods
+
+	1) yield()  2) sleep() 3) join()
+
+
+1) Yield() method
+-------------------
+
+--> Yield() is static method available in Thread class which is used to pause the current thread exceution and give chance to the other waiting threads having the same priority.
+
+-->If multiple threads are in waiting state, we can not say which thread will execute first, That is depends on the Thread scheduler.
+
+
+example
+---------
+
+package com.sriniit.threadprogs;
+
+
+class MyThread1 extends Thread{
+	
+	public void run() {
+		
+		for(int i=1; i<=5; i++) {
+			
+			System.out.println("Thread-1");
+			
+			Thread.yield();
+		}
+		
+		System.out.println("Thread-1 execution completed");
+	}
+} 
+
+class MyThread2 extends Thread{
+	
+	public void run() {
+		
+		for(int i=1; i<=5; i++) {
+			
+			System.out.println("Thread-2");
+		}
+		
+		System.out.println("Thread-2 -execution completed");
+	}
+}
+
+public class YieldDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		MyThread1 t1=new MyThread1();		
+		MyThread2 t2=new MyThread2();
+		
+		System.out.println(t1.getPriority()+"  "+t2.getPriority());
+		
+		t1.start();
+		t2.start();
+
+	}
+
+}
+
+note : The actual order of the outputs may vary for multiple executions
+
+--> Thread.yield() method giving hint to the Thread schedular  but we can not guarantee and which thread executed first that is depends on Thread schedular.
+
+--> Thread-2 will typically complete the execution first due to its yield() method behavior.
+
+
+sleep()
+---------- 
+
+sleep() method is used to pause the execution for specific time.
+
+
+package com.sriniit.threadprogs;
+
+public class SleepDemo implements Runnable{
+	
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+		for(int i=1; i<=5; i++) {
+			System.out.println("Child-Thread");
+			try {
+				Thread.sleep(3000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Thread t=new Thread(new SleepDemo());		
+		t.start();
+
+	}
+
+}
+
+join()
+---------
+
+--> join() method is used to pause the execution of other threads and give chance to current thread execution
+
+--> It is sued to ensure that a Thread finishes the execution before the next thread continuous.|
+
+
+package com.sriniit.threadprogs;
+
+class MyThread4 extends Thread{
+	
+	
+	public void run() {
+		
+		System.out.println("Thread-1 executed");
+		
+		try {
+			Thread.sleep(10);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}
+
+class MyThread5 extends Thread{
+	
+	
+	public void run() {
+		
+		System.out.println("Thread-2 executed");
+		
+		try {
+			Thread.sleep(10);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}
+
+public class JoinDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
+		MyThread4 t1=new MyThread4();
+		MyThread5 t2=new MyThread5();
+		
+		t1.start();  t2.start(); 
+		
+		
+		try {
+			
+			System.out.println("Main Thread is in waiting ");
+			
+			t1.join();			
+			t2.join();
+			
+		} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		System.out.println("Main Thread execution completed after t1  and t2");
+		
+
+	}
+
+}
+
+
+Synchronization
+=================
+
+
+Synchronization is a mechanism  that ensures only one thread access the shared resource(like method or block of code) at a time.
+
+It prevents race condition where multiple threads  trying to update the data concurrently leading to inconsistent results.
+
+
+imagine 4 threads are trying to update the bank balance on same time 
+
+
+Thread 1: reads the balance 1000 ----> adds the 100---> update the balance as 1100
+Thread 2: reads the balance 1000 ----> adds the 200---> update the balance as 1200
+Thread 3: reads the balance 1000 ----> adds the 50---> update the balance as 1050
+Thread 4: reads the balance 1000 ----> adds the 500---> update the balance as 1500
+
+The final expecting balance is 1850, but due to race condition it may becomes either 1100 or 1200 or 1050 or 1500.
+
+
+package com.sriniit.threadprogs;
+
+
+class BankAccount{
+	
+	private int balance=1000;
+	
+	
+	public synchronized void deposit(int amount) {
+		
+		int newBalance=balance+amount;
+		
+		
+		System.out.println(newBalance);
+		
+		try {
+			Thread.sleep(100);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		balance=newBalance;
+	}
+	
+	public int getBalance() {
+		
+		return balance;
+	}
+	
+}
+
+
+class DepositTask extends Thread{
+	
+	private BankAccount account;
+	
+	 public DepositTask(BankAccount account) {
+		 
+		 this.account=account;
+	 }
+	 
+	 public void run() {
+		 
+		 for(int i=1; i<=2; i++){
+			 
+			 account.deposit(100);
+		 }
+	 }
+	
+}
+
+public class NoSyncDepositDemo {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		
+		
+		BankAccount account=new BankAccount();
+		
+		
+		DepositTask t1=new DepositTask(account);
+		DepositTask t2=new DepositTask(account);
+		
+		
+		t1.start();
+		
+		t2.start();
+		
+		t1.join();
+		t2.join();		
+		
+		System.out.println("Final Bank Balance is : " + account.getBalance() );
+
+	}
+
+}
+
+How to achieve the synchronization 
+=====================================
+
+We can achieve synchronization in 2 ways
+
+1) at method level
+
+2) at block level
+
+
+synchronized block
+------------------
+
+syntax :  synchronized {
+
+	//business logic
+	    }
+
+synchronized method
+--------------------
+
+
+syntax : public synchronized void m1(){
+
+	//business logic
+		}
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

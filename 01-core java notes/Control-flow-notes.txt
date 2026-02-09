@@ -1,0 +1,488 @@
+Control Statements
+=====================
+
+-> Java program will be executed line by line sequentially (default behaviour)
+
+-> In project, code should be execute based on user operation and based on some conditions
+
+-> Using control statements  we can control the java program execution flow.
+
+
+-> Control statements are divided into 3 types
+
+		1) decision making statements / conditional statements
+		2) Looping statements
+		3) Transfer/ Branching statements
+
+
+1) decision making statements / conditional statements
+=======================================================
+
+We use conditional statements to execute the code based on some condition
+
+
+1) simple if  2) if - else  3) if--- else-if-else-if----else(if else ladder)    4) switch
+
+
+2) Looping statements
+======================
+
+We use Looping statements to execute the code repeatedly.
+
+ex:  1) while loop   2) do-while loop 3) for loop  4) for-each loop
+
+
+
+3) Transfer/ Branching statements
+==================================
+
+1) break   2) continue  3) return
+
+
+
+
+1) simple if
+=================
+
+syntax: 
+--------
+
+if(condition)
+{
+  //stmt-1;
+  //stmt-2;
+  //stmt-3;
+
+}
+
+
+ex:  
+class SimpleIfDemo{
+
+public static void main(String[] args){
+
+int a=10;
+
+int b=20;
+if (a>b){
+
+System.out.println("A is greater than B");
+}
+System.out.println("Bye");
+}
+}
+
+
+2)  if-else
+=================
+
+syntax: 
+--------
+
+if(condition)
+{
+  //stmt-1;
+  //stmt-2;
+  //stmt-3;
+
+}
+else{
+ //stmt-4;
+ //stmt-5;
+
+}
+
+
+ex:  
+class IfElseDemo{
+
+public static void main(String[] args){
+
+int age=20;
+
+if (age>18){
+
+System.out.println("Eligible for Driving");
+}
+
+else{
+
+System.out.println("Not Eligible for Driving");
+
+}
+
+System.out.println("Bye");
+
+}
+
+}
+
+else-if ladder
+=======================
+
+if(condition_1){
+	//stmt-1;}
+
+	else-if(condition_2){
+	//stmt-2;
+	}
+	else-if(condition_3){
+	//stmt-3;
+	}
+	
+else{
+
+//stmt-4;
+}
+
+
+ex: class IfElseLadderDemo{
+public static void main(String[] args){
+int a=0;
+
+if (a>0){
+
+System.out.println("  a is positive number");
+}
+
+else if(a<0) {
+
+System.out.println("a is negetive number");
+
+}
+else{
+
+System.out.println("a is  Zero");
+
+}
+}
+}
+
+
+write the java program to print even/odd number using if-else and take input dynamically using Scanner class
+================
+
+
+package com.sriniit.java.jse.contorlslow;
+
+import java.util.Scanner;
+
+public class OddOrEvenDemo {
+
+	public static void main(String[] args)  {
+		
+		
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter Number");		
+		
+		int num=sc.nextInt();
+		
+		if(num%2==0) {
+			
+			System.out.println("Even Number");
+		}
+		else {
+			System.out.println("Odd Number");
+		}
+	}
+}
+
+Switch case
+=============
+
+--> Using switch case we can control the program execution
+
+--> When we have up to 5 conditions we use if-else ladder (recommended approach)
+
+--> When we have 10 to20  conditions, its recommended to use Switch case
+
+
+syntax:
+==========
+
+switch(case){
+case 1 : //stmt-1
+	break;
+case 2 : //stmt-2
+	break;
+case 3 : //stmt-3
+	break;
+
+default : //stmt-default
+
+}
+
+ex :
+
+/*
+
+Write a java program to read number from keyboard, based on the given number 
+we need to print the day using "Switch"
+
+1-Sunday
+2-Monday
+3-Tuesday
+4-Wednesday
+5-Thursday
+6-Friday
+7-Saterday
+ > No day Found
+
+
+*/
+
+package com.sriniit.java.jse.contorlslow;
+
+import java.util.Scanner;
+
+public class SwitchCaseDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
+		Scanner sc= new Scanner(System.in);
+		
+		System.out.println("Entera Number");
+		int number=sc.nextInt();		
+		
+		switch(number) {
+		
+		case 1 : System.out.println("Sunday");
+				break;
+		case 2 : System.out.println("Monday");
+				break;
+		case 3 : System.out.println("Tuesday");
+				break;
+		case 4 : System.out.println("Wednesday");
+				break;
+		case 5 : System.out.println("Thursday");
+				break;
+		case 6 : System.out.println("Friday");
+				break;
+		case 7 : System.out.println("Saterday");
+				break;
+				
+		default : System.out.println("No Day Found");
+				
+				
+		}
+	}
+
+}
+
+
+Loos in java
+=====================
+
+-> Loops are used to execute statements repeatedly 
+
+-> In java we have below loops
+
+1) while loop  2) do-while loop 3) for loop 4) for-each loop
+
+
+1) while loop
+====================
+
+-> While loop is used to execute statements until condition is true
+
+-> We can say while loop is conditional based loop
+
+-> If the condition is true loop will be executed else loop will be terminated.
+
+
+Syntex:  
+		while(condition){
+
+		//statements
+		
+		}
+ex :
+=======
+public class WhileLoopDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub		
+		int i=1;		
+		while(i<10) {			
+			System.out.println(i);  
+			i++;
+		}
+	}
+}
+
+
+2) do-while loop
+=====================
+
+-> do-while loop will execute the statements first and then it will check the condition
+-> We can say do-while loop is conditional based loop
+
+syntax: do{
+
+	//statements
+	}while(condition);
+
+
+Ex: 	public class DoWhileLoopDemo {
+
+	public static void main(String[] args) {		
+		
+		int i=1;		
+		do {			
+			System.out.println(i);
+			i++;
+		}while(i<=15);
+	}
+}
+
+3) for loop
+=====================
+
+-> It is used to execute the statements multiple times so we can say for loop is range based loop
+
+syntax:
+
+	 for(initialization; condition;  increment/decrement){
+	
+		//statements
+		
+		}
+
+	example:
+
+	public class ForLoopDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		for(int i=1; i<=20; i++) {
+			
+			System.out.println(i);
+		}
+	}
+}
+
+Nested Loops
+====================
+
+-> Writing one loop inside the another loop is called Nested loops
+
+
+  for(int i=1; i<=5; i++){
+
+	for(int j=1; j<=5; j++){
+
+		//statements;
+		}
+	
+	}
+
+ex : 
+
+		
+public class NestedLoopDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		for(int i=1; i<=5; i++){
+
+			for(int j=1; j<=5; j++){
+
+				System.out.print(" * ");
+				}
+			System.out.println();
+			
+			}
+	}
+}
+
+
+Branching Statements
+==========================
+
+break---> It is used to  come out from switch case and from loops
+
+continue---->it is used to skip one iteration in the execution then execution will continue.
+
+return------> To come out from method we use return statement.
+
+
+BreadkDemo.java
+================
+public class BreakDemo {
+
+	public static void main(String[] args) {		
+		
+		for(int i=1; i<=10; i++) {
+			
+			if(i>=5) 
+				break;					
+			
+			System.out.println(i);
+		}
+	}
+}
+
+ContinueDemo.java
+=====================
+
+public class ContinueDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		for(int i=1; i<=10; i++) {
+			
+			if(i==7) 
+				continue;					
+			
+			System.out.println(i);
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

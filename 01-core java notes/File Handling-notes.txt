@@ -1,0 +1,333 @@
+File Handling
+=================
+
+-> File handling is very important area in every programming language
+
+-> Below are the common file operations in the project.
+
+1) Creating a file
+
+2) writing the data into file
+
+3) Reading the data from file
+
+4) Delete the file.
+
+--> To perform File operations java language provided one pre defined class java.io.File
+
+--> To Perform IO(input/output) operations java.io package contains set of classes and interfaces
+
+		 File f=new File(String name); 	
+
+--> We have several methods in File class
+
+ boolean createNewFile()  :  It is used to create a new empty file
+
+ Boolean mkdir() 	  :  It is used to create a new empty directory or folder
+
+ Boolean delete()  	  : It is used to delete the file/directory based on the name given.
+ 
+ isFile()		  : It is used to check weather the file is created or not
+
+ isDirectory()		  : It is used to check weather the directory is created or not
+
+ String[] list()	   : It is used to read the files or directory names  from given path	
+
+
+import java.io.File;
+import java.io.IOException;
+
+public class FileDemo {
+
+	public static void main(String[] args) throws IOException  {
+		// TODO Auto-generated method stub
+		
+		
+		File file=new File("C:\\Users\\srini\\Desktop\\IN-Srini Java boot camp-Sep-2025\\02-core-java-programs\\java.io\\hello.txt");
+		
+		File dir=new File("C:\\Users\\srini\\Desktop\\IN-Srini Java boot camp-Sep-2025\\02-core-java-programs\\java.io\\srini");
+	
+		
+			boolean fileCreate=file.createNewFile();
+			System.out.println(fileCreate);
+			
+			boolean dirCreate=dir.mkdir();
+			System.out.println(dirCreate);
+	}
+
+}
+
+
+
+File fd=new File("C:\\Users\\srini\\Desktop\\IN-Srini Java boot camp-Sep-2025\\02-core-java-programs\\java.io\\hello.txt");
+		
+		boolean isDelete=fd.delete();
+		System.out.println(isDelete);
+			
+			
+			File f=new File("C:\\Users\\srini\\Desktop\\IN-Srini Java boot camp-Sep-2025\\02-core-java-programs\\java.io");
+			
+			String[] name=f.list();
+			
+			for(int i=0; i<name.length; i++) {
+				System.out.println(name[i]);
+			}
+			
+			System.out.println();
+			
+			for(String str1 :name) {
+				
+				System.out.println(str1);
+			}
+
+IO Streams
+===================
+
+--> To perform operations on the file we need to use IO streams
+
+--> Using IO streams we can establish connection between java program and file.
+
+		  java program<-----------------------------------------------> write File
+          	 java program<-----------------------------------------------> read File
+
+
+IO streams are divided into 2 types
+
+	1) Byte stream       : To read/write binary data(images, video, audio)
+
+	2) Character Stream  : To read/write character data(txt files)
+
+--> Byte stream providing 2 types of classes
+
+			1) Input Stream Related classes  (ex: FileInputStream )
+			2) Output Stream Related classes (ex: FileOutputStream )
+
+
+--> Character Stream providing 2 types of classes 
+
+			1) Reader classes  (Ex : FileReader)
+			2) Writer classes  (Ex : FileWriter)
+
+//java program using FileWriter to write the data into File
+
+public class FileWriterDemo {
+
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		
+		FileWriter fr=new FileWriter("C:\\Users\\srini\\Desktop\\IN-Srini Java boot camp-Sep-2025\\02-core-java-programs\\java.io\\hello-write.txt");
+		
+		fr.write("Hi, Good Morning");
+		fr.write("\n");
+		fr.write("How are you!");
+		
+		fr.close();
+	}
+}
+
+//write a java program using FileReader to read the data into File
+
+public class FileReaderDemo {
+
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		
+		FileReader fr=new FileReader("C:\\Users\\srini\\Desktop\\IN-Srini Java boot camp-Sep-2025\\02-core-java-programs\\java.io\\hello-write.txt");	
+		
+		int i=fr.read();
+		
+		while(i!=-1) {			
+			System.out.println( (char)i );			
+			i=fr.read();			
+		}
+		fr.close();
+	}
+}
+
+BufferedReader
+=================
+
+BufferedReader is the class which is available java.io package is used to read the data line by line
+
+
+//Write a java program to read the data from file using BufferedReader
+
+
+PrintWriter
+=================
+
+PrintWriter is the class available in java.io package is used to write charaters, text, Strings and formatted text to files
+
+
+System.out.println("Hi");
+
+
+		System-->   System is a class which is available in java.lang package
+		out----->   out is static variable in System class and the data type of out is PrintStream
+		println()--> it is a method in printStream class
+
+
+
+
+public class PrintWriterDemo {
+
+	public static void main(String[] args) throws FileNotFoundException {
+		// TODO Auto-generated method stub
+		
+		PrintWriter pw=new PrintWriter("C:\\Users\\srini\\Desktop\\IN-Srini Java boot camp-Sep-2025\\02-core-java-programs\\java.io\\hello-pw.txt");
+		pw.write("Hello, GoodMorning!");		
+		pw.write(123);
+		pw.write("Bye!");
+
+		pw.println("Hello, GoodMorning!");		
+		pw.println(123);
+		pw.write("Bye!");
+		
+		pw.close();
+	}
+}
+
+
+Serialization
+=================
+
+The process of converting java object into file or network supported form is called serialization.
+
+The process of converting file or network supported from into java object is called de-serialization.
+
+
+--> when you are building distributed applications(micro-services, Kafka), object must be converted into a format that can travel over the network. By using serialization  we can make this as possible.
+
+--> when you want to make our java class object as serializable our class must implement Serializable interface.
+
+
+ex: 
+
+class Person implements Serializable{
+	
+	int id;
+	String name;
+}
+
+public class SerializableDemo {
+
+	public static void main(String[] args) throws IOException, ClassNotFoundException {
+		// TODO Auto-generated method stub
+		
+		Person p=new Person();
+		p.id=102;
+		p.name="Srini-it";
+		
+		
+		 System.out.println("==============Serialization process starts==========");
+		 
+		
+		FileOutputStream fos=new FileOutputStream("C:\\Users\\srini\\Desktop\\IN-Srini Java boot camp-Sep-2025\\02-core-java-programs\\java.io\\hello-ser.ser");		
+		ObjectOutputStream oos=new ObjectOutputStream(fos);		
+		oos.writeObject(p);		
+		oos.close();
+		System.out.println("==============Serialization process completed==========");
+		
+		
+		System.out.println();
+		System.out.println();	
+		
+		
+		System.out.println("==============de-serialization process starts==========");
+		
+		
+		FileInputStream fis=new FileInputStream("C:\\Users\\srini\\Desktop\\IN-Srini Java boot camp-Sep-2025\\02-core-java-programs\\java.io\\hello-ser.ser");
+		
+		ObjectInputStream ois=new ObjectInputStream(fis);
+		
+		Object obj=ois.readObject();		
+		Person p1=(Person) obj;
+		
+		System.out.println(p1.id+"     "+p1.name);
+		
+		ois.close();		
+		
+		
+		System.out.println("==============de-serialization process completed==========");
+		
+	}
+
+}
+
+============================
+What is SerialVersionUID 
+============================
+
+--> For every .class file JVM will generate a random number that is called serialversionUID
+
+--> When we perform serialization on the java object JVM will assign .class file serialversionUID to serialized file.
+
+--> When we de-serialize, JVM will compare both serialize file UID and .class file UID, if both are not matching de-serialization will not happen.
+
+--> To Overcome the problem we have to manually generate the our own serialversionUID then JVM will not assign serialversionUID.
+
+
+transient keyword
+========================
+
+--> Transient is a keyword in java which is used to restrict the serialization 
+
+--> If we have any sensitive data/ secrets then we should not serialize those fields.
+
+
+
+ex :
+
+class Person implements Serializable{
+	
+	
+	int id;
+	String name;
+	
+	transient String password;
+} 
+
+note : If we serialize the above class(Person) object, id and name fields will be serialized, password will not be serialized because it is a transient variable.
+
+--> while de-serializing  the file, the transient keyword variables printing the default values instead of actual values.
+
+
+
+
+
+
+  
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
